@@ -7,10 +7,11 @@ interface Props {
 }
 
 const statusStyles = {
-  live:        { label: "Live",        dot: true,  color: "#22c55e" },
-  inprogress:  { label: "In Progress", dot: false, color: "#3b82f6" },
-  opensource:  { label: "Open Source", dot: false, color: "#a855f7" },
+  live:        { label: "Live",        dot: true,  color: "transparent", textColor: "rgba(255,255,255,0.9)", border: "1px solid rgba(255,255,255,0.3)" },
+  inprogress:  { label: "In Progress", dot: false, color: "transparent", textColor: "rgba(255,255,255,0.9)", border: "1px solid rgba(255,255,255,0.3)" },
+  opensource:  { label: "Open Source", dot: false, color: "transparent", textColor: "rgba(255,255,255,0.9)", border: "1px solid rgba(255,255,255,0.3)" },
 }
+
 
 export default function ProjectCard({ project }: Props) {
   return (
@@ -50,15 +51,22 @@ export default function ProjectCard({ project }: Props) {
         )}
 
         {project.status && (
-          <span
-            className="absolute top-3 right-3 text-xs px-2 py-1 rounded font-mono flex items-center gap-1.5 text-white"
-            style={{ background: statusStyles[project.status]?.color ?? "#22c55e" }}
-          >
-            {statusStyles[project.status]?.dot && (
-              <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-            )}
-            {statusStyles[project.status]?.label}
-          </span>
+      <span
+        className="absolute top-3 right-3 text-xs px-2 py-1 rounded font-mono flex items-center gap-1.5"
+        style={{
+          background: statusStyles[project.status]?.color,
+          color: statusStyles[project.status]?.textColor,
+          border: statusStyles[project.status]?.border,
+          backdropFilter: "blur(8px)",
+        }}
+      >
+        {statusStyles[project.status]?.dot && (
+          <span className="w-1.5 h-1.5 rounded-full animate-pulse"
+            style={{ background: "rgba(255,255,255,0.9)" }} />
+        )}
+        {statusStyles[project.status]?.label}
+      </span>
+
         )}
       </div>
 
