@@ -59,7 +59,7 @@ export default function Hero() {
 
         <div style={fade(0.1)} className="flex items-start gap-5 mb-8">
           <Image
-            src="/avatar.jpg"
+            src="/avatar.jpeg"
             alt="Osama Mohammed"
             width={100}
             height={100}

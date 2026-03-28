@@ -19,7 +19,7 @@ const projects: Project[] = [
     date: "Jan – Feb 2026",
     link: "https://starlightquran.vercel.app/",
     featured: true,
-    image: "/imgsprojectimgs/StarlightQuran.png",
+    image: "/imgs/projectsimgs/StarlightQuran.png",
     status: "live",
   },
   {
@@ -30,7 +30,7 @@ const projects: Project[] = [
     date: "Nov 2025",
     link: "https://nasaexpo.vercel.app/",
     featured: true,
-    image: "/imgsprojectimgs/NasaExpo.jpeg",
+    image: "/imgs/projectsimgs/NasaExpo.jpeg",
     status: "live",
   },
   {
@@ -41,7 +41,7 @@ const projects: Project[] = [
     date: "Oct – Nov 2025",
     link: "https://cortexgarden.vercel.app/",
     featured: true,
-    image: "/imgsprojectimgs/CortexGarden.jpeg",
+    image: "/imgs/projectsimgs/CortexGarden.jpeg",
     status: "live",
   },
   {
@@ -51,7 +51,7 @@ const projects: Project[] = [
     stack: ["JavaScript", "NASA API", "CSS"],
     date: "Jul 2025",
     link: "https://stellarmirror.netlify.app/",
-    image: "/imgsprojectimgs/StellarMirror.jpeg",
+    image: "/imgs/projectsimgs/StellarMirror.jpeg",
     status: "live",
   },
   {
@@ -70,7 +70,7 @@ const projects: Project[] = [
     stack: ["HTML", "CSS", "JavaScript"],
     date: "Jul 2025",
     link: "https://astrodo.netlify.app/",
-    image: "/imgsprojectimgs/AstroDo.jpeg",
+    image: "/imgs/projectsimgs/AstroDo.jpeg",
     status: "live",
   },
   {
@@ -80,7 +80,7 @@ const projects: Project[] = [
     stack: ["React", "JavaScript", "CSS", "Weather API"],
     date: "2025",
     link: "https://windly.netlify.app/",
-    image: "/imgsprojectimgs/Windly.jpeg",
+    image: "/imgs/projectsimgs/Windly.jpeg",
     status: "live",
   },
   {
@@ -90,7 +90,7 @@ const projects: Project[] = [
     stack: ["React", "JavaScript", "CSS"],
     date: "2025",
     link: "https://quotescraft.vercel.app/",
-    image: "/imgsprojectimgs/QuotesCraft.png",
+    image: "/imgs/projectsimgs/QuotesCraft.png",
     status: "live",
   },
   {
@@ -100,6 +100,7 @@ const projects: Project[] = [
     stack: ["React", "JavaScript", "CSS"],
     date: "2025",
     link: "https://re-tasks.netlify.app",
+    image: "/imgs/projectsimgs/Re-tasks.jpeg",
     status: "live",
   },
   {
