@@ -55,7 +55,7 @@ export default function Hero() {
         maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)",
       }}/>
 
-      <div className="relative z-10 max-w-2xl mx-auto w-full px-6">
+      <div className="relative z-10 max-w-2xl mx-auto w-full px-6 pt-32 pb-20">
 
         {/* صورة + اسم + عمر */}
         <div style={fade(0.1)} className="relative flex items-start gap-4 mb-8">
@@ -65,26 +65,29 @@ export default function Hero() {
             width={96}
             height={96}
             className="object-cover shrink-0 rounded-sm mt-1"
+            style={{ boxShadow: "var(--theme-avatar-shadow)" }}
           />
           <div className="flex flex-col justify-start">
             <h1 className="text-2xl font-semibold tracking-wide mb-1"
-              style={{ fontFamily: "var(--font-geist-mono, monospace)", color: "var(--text-primary)" }}>
+              style={{ fontFamily: "var(--font-mono, monospace)", color: "var(--theme-primary)" }}>
               osama mohammed
             </h1>
             <p className="text-sm mb-2"
-              style={{ fontFamily: "var(--font-geist-mono, monospace)", color: "var(--text-muted)" }}>
+              style={{ fontFamily: "var(--font-mono, monospace)", color: "var(--theme-secondary)" }}>
               frontend dev
             </p>
             <p className="text-sm"
-              style={{ fontFamily: "var(--font-geist-mono, monospace)", color: "var(--text-faint)" }}>
-              ~ <span style={{ color: "var(--text-muted)" }}>{age}</span> years
+              style={{ fontFamily: "var(--font-mono, monospace)", color: "var(--theme-muted)" }}>
+              ~ <span style={{ color: "var(--theme-secondary)" }}>{age}</span> years
             </p>
           </div>
         </div>
 
         {/* Bio */}
-          <div style={{ ...fade(0.2), fontFamily: "var(--font-geist-mono, monospace)", color: "var(--text-muted)" }}
-            className="text-sm leading-relaxed mb-8">
+        <div
+          style={{ ...fade(0.2), fontFamily: "var(--font-mono, monospace)", color: "var(--theme-secondary)" }}
+          className="text-sm leading-relaxed mb-8"
+        >
           <p className="mb-3">
             i just like building things. a lot. obsessed with performance,
             accessibility, and clean systems that scale.
@@ -96,7 +99,7 @@ export default function Hero() {
               target="_blank"
               rel="noreferrer"
               className="underline underline-offset-4 transition-colors duration-200"
-              style={{ color: "var(--text-primary)" }}
+              style={{ color: "var(--theme-primary)" }}
               onMouseEnter={e => (e.currentTarget.style.opacity = "0.7")}
               onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
             >
@@ -108,24 +111,26 @@ export default function Hero() {
         </div>
 
         {/* Social Icons */}
-          <div style={{ ...fade(0.28), color: "var(--text-faint)" }}
-            className="flex flex-wrap items-center gap-4 sm:gap-5 mb-8">
+        <div
+          style={{ ...fade(0.28), color: "var(--theme-muted)" }}
+          className="flex flex-wrap items-center gap-4 sm:gap-5 mb-8"
+        >
           <a href="https://github.com/OsamaFed" target="_blank" rel="noreferrer"
             className="transition-colors duration-200"
-            onMouseEnter={e => (e.currentTarget.style.color = "var(--text-primary)")}
-            onMouseLeave={e => (e.currentTarget.style.color = "var(--text-faint)")}>
+            onMouseEnter={e => (e.currentTarget.style.color = "var(--theme-icon-hover)")}
+            onMouseLeave={e => (e.currentTarget.style.color = "var(--theme-muted)")}>
             <GithubIcon />
           </a>
           <a href="https://x.com/" target="_blank" rel="noreferrer"
             className="transition-colors duration-200"
-            onMouseEnter={e => (e.currentTarget.style.color = "var(--text-primary)")}
-            onMouseLeave={e => (e.currentTarget.style.color = "var(--text-faint)")}>
+            onMouseEnter={e => (e.currentTarget.style.color = "var(--theme-icon-hover)")}
+            onMouseLeave={e => (e.currentTarget.style.color = "var(--theme-muted)")}>
             <XIcon />
           </a>
           <a href="mailto:osama.mohammed.work1@gmail.com"
             className="transition-colors duration-200"
-            onMouseEnter={e => (e.currentTarget.style.color = "var(--text-primary)")}
-            onMouseLeave={e => (e.currentTarget.style.color = "var(--text-faint)")}>
+            onMouseEnter={e => (e.currentTarget.style.color = "var(--theme-icon-hover)")}
+            onMouseLeave={e => (e.currentTarget.style.color = "var(--theme-muted)")}>
             <EmailIcon />
           </a>
         </div>
@@ -135,20 +140,20 @@ export default function Hero() {
           <a
             href="/cv.pdf"
             target="_blank"
-            className="group text-sm px-4 py-2 rounded-lg border transition-all flex items-center gap-2"
+            className="group text-sm px-4 py-2 rounded-lg transition-all flex items-center gap-2"
             style={{
-              fontFamily: "var(--font-geist-mono, monospace)",
-              color: "var(--text-muted)",
-              border: "1px solid var(--border)",
+              fontFamily: "var(--font-mono, monospace)",
+              color: "var(--theme-secondary)",
+              border: "1px solid var(--theme-card-border)",
             }}
             onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.color = "var(--text-primary)"
-              ;(e.currentTarget as HTMLElement).style.borderColor = "var(--border-hover)"
-              ;(e.currentTarget as HTMLElement).style.background = "var(--card)"
+              (e.currentTarget as HTMLElement).style.color = "var(--theme-primary)"
+              ;(e.currentTarget as HTMLElement).style.borderColor = "var(--theme-card-hover-border)"
+              ;(e.currentTarget as HTMLElement).style.background = "var(--theme-card-bg)"
             }}
             onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.color = "var(--text-muted)"
-              ;(e.currentTarget as HTMLElement).style.borderColor = "var(--border)"
+              (e.currentTarget as HTMLElement).style.color = "var(--theme-secondary)"
+              ;(e.currentTarget as HTMLElement).style.borderColor = "var(--theme-card-border)"
               ;(e.currentTarget as HTMLElement).style.background = "transparent"
             }}
           >
@@ -156,20 +161,20 @@ export default function Hero() {
           </a>
           <a
             href="mailto:osama.mohammed.work1@gmail.com"
-            className="group text-sm px-4 py-2 rounded-lg border transition-all flex items-center gap-2"
+            className="group text-sm px-4 py-2 rounded-lg transition-all flex items-center gap-2"
             style={{
-              fontFamily: "var(--font-geist-mono, monospace)",
-              color: "var(--text-muted)",
-              border: "1px solid var(--border)",
+              fontFamily: "var(--font-mono, monospace)",
+              color: "var(--theme-secondary)",
+              border: "1px solid var(--theme-card-border)",
             }}
             onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.color = "var(--text-primary)"
-              ;(e.currentTarget as HTMLElement).style.borderColor = "var(--border-hover)"
-              ;(e.currentTarget as HTMLElement).style.background = "var(--card)"
+              (e.currentTarget as HTMLElement).style.color = "var(--theme-primary)"
+              ;(e.currentTarget as HTMLElement).style.borderColor = "var(--theme-card-hover-border)"
+              ;(e.currentTarget as HTMLElement).style.background = "var(--theme-card-bg)"
             }}
             onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.color = "var(--text-muted)"
-              ;(e.currentTarget as HTMLElement).style.borderColor = "var(--border)"
+              (e.currentTarget as HTMLElement).style.color = "var(--theme-secondary)"
+              ;(e.currentTarget as HTMLElement).style.borderColor = "var(--theme-card-border)"
               ;(e.currentTarget as HTMLElement).style.background = "transparent"
             }}
           >

@@ -1,3 +1,4 @@
+"use client"
 import AnimatedSection from "@/components/ui/AnimatedSection"
 import ProjectCard from "@/components/projects/ProjectCard"
 import { projects } from "@/lib/projects"

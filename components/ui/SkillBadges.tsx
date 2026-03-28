@@ -50,17 +50,17 @@ export default function SkillBadges() {
             key={skill.name}
             className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs transition-all duration-200 cursor-default"
             style={{
-              border: "1px solid var(--badge-border)",
-              background: "var(--badge-bg)",
-              color: "var(--badge-text)",
+              border: "1px solid var(--theme-badge-border)",
+              background: "var(--theme-badge-bg)",
+              color: "var(--theme-badge-text)",
             }}
             onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.borderColor = "var(--border-hover)"
-              ;(e.currentTarget as HTMLElement).style.color = "var(--text-primary)"
+              (e.currentTarget as HTMLElement).style.borderColor = "var(--theme-card-hover-border)"
+              ;(e.currentTarget as HTMLElement).style.color = "var(--theme-primary)"
             }}
             onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.borderColor = "var(--badge-border)"
-              ;(e.currentTarget as HTMLElement).style.color = "var(--badge-text)"
+              (e.currentTarget as HTMLElement).style.borderColor = "var(--theme-badge-border)"
+              ;(e.currentTarget as HTMLElement).style.color = "var(--theme-badge-text)"
             }}
           >
             <Icon className="w-3 h-3" />

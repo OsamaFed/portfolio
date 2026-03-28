@@ -5,7 +5,7 @@ type Theme = "dark" | "light"
 
 interface ThemeContextType {
   theme: Theme
-  toggleTheme: (x?: number, y?: number) => void
+  toggleTheme: () => void
 }
 
 const ThemeContext = createContext<ThemeContextType>({
@@ -24,8 +24,11 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
   }, [])
 
   useEffect(() => {
-    document.documentElement.classList.remove("dark", "light")
-    document.documentElement.classList.add(theme)
+    if (theme === "light") {
+      document.documentElement.classList.add("light")
+    } else {
+      document.documentElement.classList.remove("light")
+    }
     localStorage.setItem("theme", theme)
   }, [theme])
 
