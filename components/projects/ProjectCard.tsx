@@ -19,10 +19,7 @@ export default function ProjectCard({ project }: Props) {
       target="_blank"
       rel="noreferrer"
       className="group block rounded-xl overflow-hidden transition-all duration-300 hover:scale-[1.02]"
-      style={{
-        background: "var(--card)",
-        border: "1px solid var(--border)",
-      }}
+      style={{ background: "var(--card)", border: "1px solid var(--border)" }}
       onMouseEnter={e => {
         (e.currentTarget as HTMLElement).style.borderColor = "var(--border-hover)"
         ;(e.currentTarget as HTMLElement).style.background = "var(--card-hover)"
@@ -32,28 +29,31 @@ export default function ProjectCard({ project }: Props) {
         ;(e.currentTarget as HTMLElement).style.background = "var(--card)"
       }}
     >
-      <div className="relative h-40 overflow-hidden">
+      <div className="relative overflow-hidden" style={{ height: "160px" }}>
         {project.image ? (
           <Image
             src={project.image}
             alt={project.name}
             fill
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover object-top transition-transform duration-500 group-hover:scale-110"
           />
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center"
-            style={{ background: "var(--card)" }}>
-            <span className="font-mono text-[11px]"
-              style={{ color: "var(--text-faint)" }}>
+          <div
+            className="absolute inset-0 flex items-center justify-center"
+            style={{ background: "var(--card)" }}
+          >
+            <span className="font-mono text-[11px]" style={{ color: "var(--text-faint)" }}>
               preview
             </span>
           </div>
         )}
 
-        {/* Status badge */}
         {project.status && (
-          <span className="absolute top-3 right-3 text-xs px-2 py-1 rounded font-mono flex items-center gap-1.5 text-white"
-            style={{ background: statusStyles[project.status]?.color ?? "#22c55e" }}>
+          <span
+            className="absolute top-3 right-3 text-xs px-2 py-1 rounded font-mono flex items-center gap-1.5 text-white"
+            style={{ background: statusStyles[project.status]?.color ?? "#22c55e" }}
+          >
             {statusStyles[project.status]?.dot && (
               <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
             )}
@@ -63,26 +63,26 @@ export default function ProjectCard({ project }: Props) {
       </div>
 
       <div className="p-4">
-        <p className="font-mono text-[14px] mb-1 transition-colors duration-200"
-          style={{ color: "var(--text-primary)" }}>
+        <p className="font-mono text-[14px] mb-1" style={{ color: "var(--text-primary)" }}>
           {project.name}
         </p>
-        <p className="font-mono text-[11px] mb-3"
-          style={{ color: "var(--text-faint)" }}>
+        <p className="font-mono text-[11px] mb-3" style={{ color: "var(--text-faint)" }}>
           {project.tagline}
         </p>
-        <p className="font-sans text-[13px] leading-relaxed mb-4"
-          style={{ color: "var(--text-muted)" }}>
+        <p className="font-sans text-[13px] leading-relaxed mb-4" style={{ color: "var(--text-muted)" }}>
           {project.desc}
         </p>
         <div className="flex flex-wrap gap-1.5">
           {project.stack.map(tech => (
-            <span key={tech} className="text-xs px-2 py-0.5 rounded font-mono"
+            <span
+              key={tech}
+              className="text-xs px-2 py-0.5 rounded font-mono"
               style={{
                 background: "var(--badge-bg)",
                 color: "var(--badge-text)",
                 border: "1px solid var(--badge-border)",
-              }}>
+              }}
+            >
               {tech}
             </span>
           ))}
