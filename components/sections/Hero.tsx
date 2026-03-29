@@ -70,7 +70,7 @@ export default function Hero() {
           <div className="flex flex-col justify-start">
             <h1 className="text-2xl font-semibold tracking-wide mb-1"
               style={{ fontFamily: "var(--font-mono, monospace)", color: "var(--theme-primary)" }}>
-              osama mohammed
+              Osama Mo
             </h1>
             <p className="text-sm mb-2"
               style={{ fontFamily: "var(--font-mono, monospace)", color: "var(--theme-secondary)" }}>
@@ -105,7 +105,7 @@ export default function Hero() {
             >
               @astronomyquest
             </a>
-            , playing chess, or dying in elden ring.
+            , playing chess, or exploring Raya lucaria for the 9th time,
             oh — i build everything from my phone.
           </p>
         </div>
