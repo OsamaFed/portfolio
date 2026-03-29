@@ -2,18 +2,18 @@
 import { useEffect, useRef } from "react"
 import * as THREE from "three"
 
-// بيانات الكوكبات — إحداثيات حقيقية تقريبية
+
 const constellations = [
   {
     name: "Orion",
     stars: [
-      { x: 0,    y: 2.5,  size: 0.045, name: "Betelgeuse" },  // منكب الجوزاء
-      { x: 1.2,  y: 3.2,  size: 0.025, name: "Bellatrix" },
-      { x: -0.5, y: 1.2,  size: 0.02,  name: "Mintaka" },
-      { x: 0,    y: 1.0,  size: 0.022, name: "Alnilam" },
-      { x: 0.5,  y: 0.8,  size: 0.02,  name: "Alnitak" },
-      { x: -1.0, y: -0.5, size: 0.02,  name: "Saiph" },
-      { x: 1.0,  y: -0.5, size: 0.035, name: "Rigel" },
+      { x: -2.5, y: 1.2,   size: 0.03,  name: "Betelgeuse" },
+      { x: -1.8, y: 1.5,   size: 0.018, name: "Bellatrix" },
+      { x: -2.2, y: 0.6,   size: 0.015, name: "Mintaka" },
+      { x: -2.0, y: 0.5,   size: 0.016, name: "Alnilam" },
+      { x: -1.8, y: 0.4,   size: 0.015, name: "Alnitak" },
+      { x: -2.4, y: -0.3,  size: 0.015, name: "Saiph" },
+      { x: -1.6, y: -0.3,  size: 0.025, name: "Rigel" },
     ],
     lines: [
       [0, 1], [0, 2], [1, 3], [2, 3], [3, 4],
@@ -21,33 +21,15 @@ const constellations = [
     ],
   },
   {
-    name: "Scorpius",
-    stars: [
-      { x: 4.5,  y: 1.5,  size: 0.04,  name: "Antares" },
-      { x: 4.0,  y: 2.2,  size: 0.02,  name: "Graffias" },
-      { x: 5.0,  y: 2.0,  size: 0.02,  name: "Dschubba" },
-      { x: 4.5,  y: 0.5,  size: 0.022, name: "Tau Sco" },
-      { x: 4.0,  y: -0.3, size: 0.02,  name: "Epsilon" },
-      { x: 4.8,  y: -1.0, size: 0.02,  name: "Mu Sco" },
-      { x: 5.5,  y: -1.5, size: 0.025, name: "Zeta Sco" },
-      { x: 6.0,  y: -0.8, size: 0.02,  name: "Eta Sco" },
-      { x: 6.5,  y: -1.2, size: 0.022, name: "Theta Sco" },
-    ],
-    lines: [
-      [0, 1], [0, 2], [0, 3], [3, 4],
-      [4, 5], [5, 6], [6, 7], [7, 8],
-    ],
-  },
-  {
     name: "Ursa Major",
     stars: [
-      { x: -4.0, y: 2.0,  size: 0.025, name: "Dubhe" },
-      { x: -3.2, y: 1.8,  size: 0.022, name: "Merak" },
-      { x: -3.0, y: 2.8,  size: 0.02,  name: "Phecda" },
-      { x: -2.2, y: 2.6,  size: 0.02,  name: "Megrez" },
-      { x: -1.5, y: 3.2,  size: 0.025, name: "Alioth" },
-      { x: -0.8, y: 3.0,  size: 0.022, name: "Mizar" },
-      { x: -0.2, y: 3.6,  size: 0.02,  name: "Alkaid" },
+      { x: -0.8, y: 1.5,  size: 0.018, name: "Dubhe" },
+      { x: -0.3, y: 1.3,  size: 0.016, name: "Merak" },
+      { x: -0.2, y: 1.8,  size: 0.015, name: "Phecda" },
+      { x:  0.3, y: 1.7,  size: 0.015, name: "Megrez" },
+      { x:  0.7, y: 2.0,  size: 0.018, name: "Alioth" },
+      { x:  1.1, y: 1.9,  size: 0.016, name: "Mizar" },
+      { x:  1.5, y: 2.2,  size: 0.015, name: "Alkaid" },
     ],
     lines: [
       [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6],
@@ -56,19 +38,37 @@ const constellations = [
   {
     name: "Cassiopeia",
     stars: [
-      { x: -5.0, y: -1.0, size: 0.022, name: "Caph" },
-      { x: -4.2, y: -0.5, size: 0.025, name: "Schedar" },
-      { x: -3.5, y: -1.0, size: 0.02,  name: "Gamma Cas" },
-      { x: -2.8, y: -0.5, size: 0.022, name: "Ruchbah" },
-      { x: -2.0, y: -1.0, size: 0.02,  name: "Segin" },
+      { x:  0.5, y: -0.5, size: 0.016, name: "Caph" },
+      { x:  1.0, y: -0.2, size: 0.018, name: "Schedar" },
+      { x:  1.5, y: -0.6, size: 0.015, name: "Gamma Cas" },
+      { x:  2.0, y: -0.3, size: 0.016, name: "Ruchbah" },
+      { x:  2.5, y: -0.7, size: 0.015, name: "Segin" },
     ],
     lines: [
       [0, 1], [1, 2], [2, 3], [3, 4],
     ],
   },
+  {
+    name: "Scorpius",
+    stars: [
+      { x: -0.5, y: -0.8, size: 0.028, name: "Antares" },
+      { x: -1.0, y: -0.4, size: 0.015, name: "Graffias" },
+      { x:  0.0, y: -0.5, size: 0.015, name: "Dschubba" },
+      { x: -0.5, y: -1.3, size: 0.016, name: "Tau Sco" },
+      { x: -0.8, y: -1.8, size: 0.015, name: "Epsilon" },
+      { x: -0.3, y: -2.2, size: 0.015, name: "Mu Sco" },
+      { x:  0.2, y: -2.5, size: 0.018, name: "Zeta Sco" },
+      { x:  0.6, y: -2.2, size: 0.015, name: "Eta Sco" },
+      { x:  1.0, y: -2.5, size: 0.016, name: "Theta Sco" },
+    ],
+    lines: [
+      [0, 1], [0, 2], [0, 3], [3, 4],
+      [4, 5], [5, 6], [6, 7], [7, 8],
+    ],
+  },
 ]
 
-// نجوم خلفية عشوائية
+
 const BG_STARS = 200
 
 export default function StarField() {
@@ -79,7 +79,7 @@ export default function StarField() {
   useEffect(() => {
     if (!mountRef.current) return
 
-    // ── Setup ──────────────────────────────────────────────
+
     const W = window.innerWidth
     const H = window.innerHeight
 
@@ -91,7 +91,7 @@ export default function StarField() {
 
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 100)
-    camera.position.z = 6
+    camera.position.z = 8
 
     // ── Background stars ───────────────────────────────────
     const bgGeo = new THREE.BufferGeometry()
@@ -162,15 +162,14 @@ export default function StarField() {
     const animate = () => {
       animRef.current = requestAnimationFrame(animate)
 
-      const progress = scrollRef.current // 0 → 1
-      const visibleElements = progress * totalElements
+      const progress = scrollRef.current
+      const visibleStars = progress * totalElements
 
       // النجوم
       allStars.forEach((s, i) => {
-        const targetOpacity = i < visibleElements ? 1 : 0
+        const targetOpacity = i < visibleStars ? 1 : 0
         s.mesh.material.opacity += (targetOpacity - s.mesh.material.opacity) * 0.05
 
-        // تأثير twinkle خفيف
         if (s.mesh.material.opacity > 0.5) {
           s.mesh.material.opacity = Math.max(0, Math.min(1,
             s.mesh.material.opacity + Math.sin(Date.now() * 0.002 + i) * 0.01
@@ -178,16 +177,25 @@ export default function StarField() {
         }
       })
 
-      // الخطوط — تظهر بعد النجوم
-      allLines.forEach((l, i) => {
-        const threshold = totalStars + i
-        const targetOpacity = threshold < visibleElements ? 0.25 : 0
+      // الخطوط — كل خط يظهر لما النجمة الثانية فيه تظهر
+      allLines.forEach((l) => {
+        const c = constellations[l.constIdx]
+        const lineData = c.lines[l.lineIdx]
+
+        // احسب index النجمة الثانية في القائمة الكاملة
+        let starOffset = 0
+        for (let ci = 0; ci < l.constIdx; ci++) {
+          starOffset += constellations[ci].stars.length
+        }
+        const secondStarGlobalIdx = starOffset + lineData[1]
+
+        // الخط يظهر لما النجمة الثانية تظهر
+        const targetOpacity = secondStarGlobalIdx < visibleStars ? 0.25 : 0
         l.line.material.opacity += (targetOpacity - l.line.material.opacity) * 0.05
       })
 
-      // حركة الكاميرا مع الـ scroll
-      camera.position.y = -scrollRef.current * 2
-      camera.position.x = Math.sin(scrollRef.current * Math.PI) * 0.3
+      camera.position.y = -scrollRef.current * 1.2
+      camera.position.x = Math.sin(scrollRef.current * Math.PI) * 0.15
 
       renderer.render(scene, camera)
     }
