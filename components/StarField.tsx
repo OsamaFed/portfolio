@@ -2,18 +2,17 @@
 import { useEffect, useRef } from "react"
 import * as THREE from "three"
 
-
 const constellations = [
   {
     name: "Orion",
     stars: [
-      { x: -2.5, y: 1.2,  size: 0.03,  name: "Betelgeuse" },
-      { x: -1.8, y: 1.5,  size: 0.018, name: "Bellatrix" },
-      { x: -2.2, y: 0.6,  size: 0.015, name: "Mintaka" },
-      { x: -2.0, y: 0.5,  size: 0.016, name: "Alnilam" },
-      { x: -1.8, y: 0.4,  size: 0.015, name: "Alnitak" },
-      { x: -2.4, y: -0.3, size: 0.015, name: "Saiph" },
-      { x: -1.6, y: -0.3, size: 0.025, name: "Rigel" },
+      { x: -3.5, y:  2.0, size: 0.030, name: "Betelgeuse" },
+      { x: -1.5, y:  2.3, size: 0.018, name: "Bellatrix" },
+      { x: -3.0, y:  0.8, size: 0.015, name: "Mintaka" },
+      { x: -2.5, y:  0.7, size: 0.016, name: "Alnilam" },
+      { x: -2.0, y:  0.6, size: 0.015, name: "Alnitak" },
+      { x: -3.3, y: -0.8, size: 0.015, name: "Saiph" },
+      { x: -1.4, y: -1.0, size: 0.025, name: "Rigel" },
     ],
     lines: [
       [0, 1], [0, 5], [1, 6], [5, 6],
@@ -24,26 +23,26 @@ const constellations = [
   {
     name: "Pleiades",
     stars: [
-      { x:  0.2, y:  2.8, size: 0.014, name: "Alcyone" },
-      { x:  0.5, y:  3.0, size: 0.011, name: "Atlas" },
-      { x:  0.7, y:  2.7, size: 0.010, name: "Electra" },
-      { x:  0.3, y:  2.5, size: 0.010, name: "Maia" },
-      { x:  0.6, y:  2.5, size: 0.009, name: "Merope" },
-      { x:  0.9, y:  2.9, size: 0.009, name: "Taygeta" },
-      { x:  1.0, y:  2.6, size: 0.009, name: "Pleione" },
+      { x:  3.5, y:  4.5, size: 0.013, name: "Alcyone" },
+      { x:  3.8, y:  4.8, size: 0.010, name: "Atlas" },
+      { x:  4.1, y:  4.4, size: 0.009, name: "Electra" },
+      { x:  3.6, y:  4.2, size: 0.009, name: "Maia" },
+      { x:  4.0, y:  4.1, size: 0.008, name: "Merope" },
+      { x:  4.3, y:  4.7, size: 0.008, name: "Taygeta" },
+      { x:  4.4, y:  4.3, size: 0.008, name: "Pleione" },
     ],
     lines: [],
   },
   {
     name: "Ursa Minor",
     stars: [
-      { x: -0.8, y: -1.8, size: 0.025, name: "Polaris" },
-      { x: -0.5, y: -1.1, size: 0.014, name: "Yildun" },
-      { x: -0.2, y: -0.5, size: 0.013, name: "Epsilon UMi" },
-      { x:  0.1, y:  0.1, size: 0.013, name: "Delta UMi" },
-      { x:  0.5, y:  0.4, size: 0.016, name: "Zeta UMi" },
-      { x:  0.7, y:  0.9, size: 0.014, name: "Eta UMi" },
-      { x:  0.3, y:  1.1, size: 0.016, name: "Beta UMi" },
+      { x:  2.0, y:  1.0, size: 0.022, name: "Polaris" },
+      { x:  2.5, y: -0.2, size: 0.013, name: "Yildun" },
+      { x:  2.8, y: -1.2, size: 0.012, name: "Epsilon UMi" },
+      { x:  3.0, y: -2.2, size: 0.012, name: "Delta UMi" },
+      { x:  3.6, y: -2.0, size: 0.015, name: "Zeta UMi" },
+      { x:  4.0, y: -1.3, size: 0.013, name: "Eta UMi" },
+      { x:  3.5, y: -0.9, size: 0.015, name: "Kochab" },
     ],
     lines: [
       [0, 1], [1, 2], [2, 3],
@@ -53,11 +52,11 @@ const constellations = [
   {
     name: "Cassiopeia",
     stars: [
-      { x:  0.5, y: -0.5, size: 0.016, name: "Caph" },
-      { x:  1.0, y: -0.2, size: 0.018, name: "Schedar" },
-      { x:  1.5, y: -0.6, size: 0.015, name: "Gamma Cas" },
-      { x:  2.0, y: -0.3, size: 0.016, name: "Ruchbah" },
-      { x:  2.5, y: -0.7, size: 0.015, name: "Segin" },
+      { x: -4.5, y: -2.0, size: 0.015, name: "Caph" },
+      { x: -3.8, y: -1.5, size: 0.018, name: "Schedar" },
+      { x: -3.0, y: -2.0, size: 0.015, name: "Gamma Cas" },
+      { x: -2.2, y: -1.5, size: 0.015, name: "Ruchbah" },
+      { x: -1.5, y: -2.1, size: 0.014, name: "Segin" },
     ],
     lines: [
       [0, 1], [1, 2], [2, 3], [3, 4],
@@ -66,17 +65,17 @@ const constellations = [
   {
     name: "Scorpius",
     stars: [
-      { x:  0.0, y:  0.5,  size: 0.028, name: "Antares" },
-      { x: -0.5, y:  1.3,  size: 0.015, name: "Graffias" },
-      { x:  0.0, y:  1.5,  size: 0.015, name: "Dschubba" },
-      { x:  0.5, y:  1.3,  size: 0.014, name: "Pi Sco" },
-      { x:  0.0, y: -0.2,  size: 0.016, name: "Tau Sco" },
-      { x:  0.2, y: -0.9,  size: 0.015, name: "Epsilon Sco" },
-      { x:  0.5, y: -1.5,  size: 0.015, name: "Mu Sco" },
-      { x:  0.9, y: -2.0,  size: 0.016, name: "Zeta Sco" },
-      { x:  1.3, y: -2.3,  size: 0.015, name: "Eta Sco" },
-      { x:  1.6, y: -2.1,  size: 0.015, name: "Theta Sco" },
-      { x:  1.8, y: -1.8,  size: 0.016, name: "Iota Sco" },
+      { x:  1.5, y: -3.5, size: 0.028, name: "Antares" },
+      { x:  0.8, y: -2.5, size: 0.015, name: "Graffias" },
+      { x:  1.5, y: -2.3, size: 0.015, name: "Dschubba" },
+      { x:  2.2, y: -2.5, size: 0.014, name: "Pi Sco" },
+      { x:  1.5, y: -4.5, size: 0.016, name: "Tau Sco" },
+      { x:  1.8, y: -5.3, size: 0.015, name: "Epsilon Sco" },
+      { x:  2.2, y: -6.0, size: 0.015, name: "Mu Sco" },
+      { x:  2.8, y: -6.6, size: 0.016, name: "Zeta Sco" },
+      { x:  3.3, y: -6.8, size: 0.015, name: "Eta Sco" },
+      { x:  3.7, y: -6.4, size: 0.015, name: "Theta Sco" },
+      { x:  3.8, y: -5.9, size: 0.016, name: "Iota Sco" },
     ],
     lines: [
       [0, 1], [0, 2], [0, 3],
@@ -84,10 +83,6 @@ const constellations = [
     ],
   },
 ]
-
-
-
-
 
 const BG_STARS = 200
 
@@ -98,7 +93,6 @@ export default function StarField() {
 
   useEffect(() => {
     if (!mountRef.current) return
-
 
     const W = window.innerWidth
     const H = window.innerHeight
@@ -113,25 +107,21 @@ export default function StarField() {
     const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 100)
     camera.position.z = 8
 
-    // ── Background stars ───────────────────────────────────
     const bgGeo = new THREE.BufferGeometry()
     const bgPos = new Float32Array(BG_STARS * 3)
     for (let i = 0; i < BG_STARS; i++) {
       bgPos[i * 3]     = (Math.random() - 0.5) * 20
-      bgPos[i * 3 + 1] = (Math.random() - 0.5) * 12
+      bgPos[i * 3 + 1] = (Math.random() - 0.5) * 40
       bgPos[i * 3 + 2] = (Math.random() - 0.5) * 4 - 2
     }
     bgGeo.setAttribute("position", new THREE.BufferAttribute(bgPos, 3))
-    const bgMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.015, transparent: true, opacity: 0.3 })
+    const bgMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.015, transparent: true, opacity: 0.15 })
     scene.add(new THREE.Points(bgGeo, bgMat))
 
-    // ── Constellation objects ──────────────────────────────
     type StarMesh = THREE.Mesh<THREE.SphereGeometry, THREE.MeshBasicMaterial>
     type LineMesh = THREE.Line<THREE.BufferGeometry, THREE.LineBasicMaterial>
 
     const cObjects: { stars: StarMesh[]; lines: LineMesh[] }[] = []
-
-    // كل النجوم والخطوط مرتبة بشكل مسطح
     const allStars: { mesh: StarMesh; constIdx: number; starIdx: number }[] = []
     const allLines: { line: LineMesh; constIdx: number; lineIdx: number }[] = []
 
@@ -139,14 +129,14 @@ export default function StarField() {
       const stars: StarMesh[] = []
       const lines: LineMesh[] = []
 
-      c.stars.forEach((s, si) => {
+      c.stars.forEach((s) => {
         const geo = new THREE.SphereGeometry(s.size, 8, 8)
         const mat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0 })
         const mesh = new THREE.Mesh(geo, mat)
         mesh.position.set(s.x, s.y, 0)
         scene.add(mesh)
         stars.push(mesh)
-        allStars.push({ mesh, constIdx: ci, starIdx: si })
+        allStars.push({ mesh, constIdx: ci, starIdx: stars.length - 1 })
       })
 
       c.lines.forEach((l, li) => {
@@ -166,26 +156,24 @@ export default function StarField() {
       cObjects.push({ stars, lines })
     })
 
-    // إجمالي العناصر
     const totalStars = allStars.length
     const totalLines = allLines.length
     const totalElements = totalStars + totalLines
 
-    // ── Scroll ─────────────────────────────────────────────
     const onScroll = () => {
       const maxScroll = document.body.scrollHeight - window.innerHeight
       scrollRef.current = maxScroll > 0 ? window.scrollY / maxScroll : 0
     }
     window.addEventListener("scroll", onScroll, { passive: true })
 
-    // ── Animate ────────────────────────────────────────────
     const animate = () => {
       animRef.current = requestAnimationFrame(animate)
 
       const progress = scrollRef.current
       const visibleStars = progress * totalElements
 
-      // النجوم
+      bgMat.opacity = 0.15 + progress * 0.5
+
       allStars.forEach((s, i) => {
         const targetOpacity = i < visibleStars ? 1 : 0
         s.mesh.material.opacity += (targetOpacity - s.mesh.material.opacity) * 0.05
@@ -197,24 +185,21 @@ export default function StarField() {
         }
       })
 
-      // الخطوط — كل خط يظهر لما النجمة الثانية فيه تظهر
       allLines.forEach((l) => {
         const c = constellations[l.constIdx]
         const lineData = c.lines[l.lineIdx]
 
-        // احسب index النجمة الثانية في القائمة الكاملة
         let starOffset = 0
         for (let ci = 0; ci < l.constIdx; ci++) {
           starOffset += constellations[ci].stars.length
         }
         const secondStarGlobalIdx = starOffset + lineData[1]
 
-        // الخط يظهر لما النجمة الثانية تظهر
         const targetOpacity = secondStarGlobalIdx < visibleStars ? 0.25 : 0
         l.line.material.opacity += (targetOpacity - l.line.material.opacity) * 0.05
       })
 
-      camera.position.y = -scrollRef.current * 1.2
+      camera.position.y = -scrollRef.current * 8
       camera.position.x = Math.sin(scrollRef.current * Math.PI) * 0.15
 
       renderer.render(scene, camera)
@@ -222,7 +207,6 @@ export default function StarField() {
 
     animate()
 
-    // ── Resize ─────────────────────────────────────────────
     const onResize = () => {
       const W = window.innerWidth
       const H = window.innerHeight
