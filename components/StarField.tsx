@@ -8,6 +8,7 @@ const constellations = [
     stars: [
       { x: -3.5, y:  2.0, size: 0.030, name: "Betelgeuse" },
       { x: -1.5, y:  2.3, size: 0.018, name: "Bellatrix" },
+      { x: -2.3, y:  3.2, size: 0.013, name: "Mu Ori" },
       { x: -3.0, y:  0.8, size: 0.015, name: "Mintaka" },
       { x: -2.5, y:  0.7, size: 0.016, name: "Alnilam" },
       { x: -2.0, y:  0.6, size: 0.015, name: "Alnitak" },
@@ -15,11 +16,10 @@ const constellations = [
       { x: -1.4, y: -1.0, size: 0.025, name: "Rigel" },
     ],
     lines: [
-      [0, 1], [0, 5], [1, 6], [5, 6],
-      [2, 3], [3, 4],
-      [0, 2], [1, 4],
+      [0, 2], [2, 1], [1, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 3],
     ],
   },
+
   {
     name: "Pleiades",
     stars: [
