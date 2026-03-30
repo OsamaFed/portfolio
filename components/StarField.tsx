@@ -26,7 +26,7 @@ const constellations = [
       { x: -0.8, y: 1.5,  size: 0.018, name: "Dubhe" },
       { x: -0.3, y: 1.3,  size: 0.016, name: "Merak" },
       { x: -0.2, y: 1.8,  size: 0.015, name: "Phecda" },
-      { x:  0.3, y: 1.7,  size: 0.015, name: "Megrez" },
+        { x:  0.3, y: 1.7,  size: 0.015, name: "Megrez" },
       { x:  0.7, y: 2.0,  size: 0.018, name: "Alioth" },
       { x:  1.1, y: 1.9,  size: 0.016, name: "Mizar" },
       { x:  1.5, y: 2.2,  size: 0.015, name: "Alkaid" },
