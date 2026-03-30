@@ -16,7 +16,7 @@ const constellations = [
       { x: -1.4, y: -1.0, size: 0.025, name: "Rigel" },
     ],
     lines: [
-      [0, 2], [2, 1], [1, 3], [3, 4], [4, 5], [5, 6], [6, 7], [7, 3],
+      [0, 2], [2, 1], [1, 5], [3, 4],[3, 6], [4, 5], [3, 0], [6, 7], [7, 5],
     ],
   },
 
@@ -104,7 +104,7 @@ export default function StarField() {
     mountRef.current.appendChild(renderer.domElement)
 
     const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(60, W / H, 0.1, 100)
+    const camera = new THREE.PerspectiveCamera(110, W / H, 0.1, 100)
     camera.position.z = 8
 
     const bgGeo = new THREE.BufferGeometry()
