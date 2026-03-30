@@ -7,32 +7,37 @@ const constellations = [
   {
     name: "Orion",
     stars: [
-      { x: -2.5, y: 1.2,   size: 0.03,  name: "Betelgeuse" },
-      { x: -1.8, y: 1.5,   size: 0.018, name: "Bellatrix" },
-      { x: -2.2, y: 0.6,   size: 0.015, name: "Mintaka" },
-      { x: -2.0, y: 0.5,   size: 0.016, name: "Alnilam" },
-      { x: -1.8, y: 0.4,   size: 0.015, name: "Alnitak" },
-      { x: -2.4, y: -0.3,  size: 0.015, name: "Saiph" },
-      { x: -1.6, y: -0.3,  size: 0.025, name: "Rigel" },
+      { x: -1.0, y:  1.4, size: 0.03,  name: "Betelgeuse" },
+      { x:  0.2, y:  1.6, size: 0.018, name: "Bellatrix" },
+      { x: -1.2, y:  0.4, size: 0.015, name: "Mintaka" },
+      { x: -0.8, y:  0.3, size: 0.016, name: "Alnilam" },
+      { x: -0.4, y:  0.2, size: 0.015, name: "Alnitak" },
+      { x: -1.3, y: -0.7, size: 0.015, name: "Saiph" },
+      { x:  0.1, y: -0.9, size: 0.025, name: "Rigel" },
     ],
     lines: [
-      [0, 1], [0, 2], [1, 3], [2, 3], [3, 4],
-      [2, 5], [4, 6], [5, 6],
+      [0, 1],
+      [0, 5],
+      [1, 6],
+      [5, 6],
+      [2, 3], [3, 4],
+      [0, 2], [1, 4],
     ],
   },
   {
-    name: "Ursa Major",
+    name: "Ursa Minor",
     stars: [
-      { x: -0.8, y: 1.5,  size: 0.018, name: "Dubhe" },
-      { x: -0.3, y: 1.3,  size: 0.016, name: "Merak" },
-      { x: -0.2, y: 1.8,  size: 0.015, name: "Phecda" },
-      { x:  0.3, y: 1.7,  size: 0.015, name: "Megrez" },
-      { x:  0.7, y: 2.0,  size: 0.018, name: "Alioth" },
-      { x:  1.1, y: 1.9,  size: 0.016, name: "Mizar" },
-      { x:  1.5, y: 2.2,  size: 0.015, name: "Alkaid" },
+      { x: -0.8, y: -1.8, size: 0.025, name: "Polaris" },
+      { x: -0.5, y: -1.1, size: 0.014, name: "Yildun" },
+      { x: -0.2, y: -0.5, size: 0.013, name: "Epsilon UMi" },
+      { x:  0.1, y:  0.1, size: 0.013, name: "Delta UMi" },
+      { x:  0.5, y:  0.4, size: 0.016, name: "Zeta UMi" },
+      { x:  0.7, y:  0.9, size: 0.014, name: "Eta UMi" },
+      { x:  0.3, y:  1.1, size: 0.016, name: "Beta UMi" },
     ],
     lines: [
-      [0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 6],
+      [0, 1], [1, 2], [2, 3],
+      [3, 4], [4, 5], [5, 6], [6, 3],
     ],
   },
   {
@@ -51,22 +56,26 @@ const constellations = [
   {
     name: "Scorpius",
     stars: [
-      { x: -0.5, y: -0.8, size: 0.028, name: "Antares" },
-      { x: -1.0, y: -0.4, size: 0.015, name: "Graffias" },
-      { x:  0.0, y: -0.5, size: 0.015, name: "Dschubba" },
-      { x: -0.5, y: -1.3, size: 0.016, name: "Tau Sco" },
-      { x: -0.8, y: -1.8, size: 0.015, name: "Epsilon" },
-      { x: -0.3, y: -2.2, size: 0.015, name: "Mu Sco" },
-      { x:  0.2, y: -2.5, size: 0.018, name: "Zeta Sco" },
-      { x:  0.6, y: -2.2, size: 0.015, name: "Eta Sco" },
-      { x:  1.0, y: -2.5, size: 0.016, name: "Theta Sco" },
+      { x:  0.0, y:  0.5,  size: 0.028, name: "Antares" },
+      { x: -0.5, y:  1.3,  size: 0.015, name: "Graffias" },
+      { x:  0.0, y:  1.5,  size: 0.015, name: "Dschubba" },
+      { x:  0.5, y:  1.3,  size: 0.014, name: "Pi Sco" },
+      { x:  0.0, y: -0.2,  size: 0.016, name: "Tau Sco" },
+      { x:  0.2, y: -0.9,  size: 0.015, name: "Epsilon Sco" },
+      { x:  0.5, y: -1.5,  size: 0.015, name: "Mu Sco" },
+      { x:  0.9, y: -2.0,  size: 0.016, name: "Zeta Sco" },
+      { x:  1.3, y: -2.3,  size: 0.015, name: "Eta Sco" },
+      { x:  1.6, y: -2.1,  size: 0.015, name: "Theta Sco" },
+      { x:  1.8, y: -1.8,  size: 0.016, name: "Iota Sco" },
     ],
     lines: [
-      [0, 1], [0, 2], [0, 3], [3, 4],
-      [4, 5], [5, 6], [6, 7], [7, 8],
+      [0, 1], [0, 2], [0, 3],
+      [0, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10],
     ],
   },
 ]
+
+
 
 
 const BG_STARS = 200
