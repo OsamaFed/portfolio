@@ -57,7 +57,6 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-2xl mx-auto w-full px-6 pt-32 pb-20">
 
-        {/* صورة + اسم + عمر */}
         <div style={fade(0.1)} className="relative flex items-start gap-4 mb-8">
           <Image
             src="/avatar.jpeg"
@@ -121,7 +120,7 @@ export default function Hero() {
             onMouseLeave={e => (e.currentTarget.style.color = "var(--theme-muted)")}>
             <GithubIcon />
           </a>
-          <a href="https://x.com/" target="_blank" rel="noreferrer"
+          <a href="https://x.com/osamafed?s=21" target="_blank" rel="noreferrer"
             className="transition-colors duration-200"
             onMouseEnter={e => (e.currentTarget.style.color = "var(--theme-icon-hover)")}
             onMouseLeave={e => (e.currentTarget.style.color = "var(--theme-muted)")}>
@@ -140,9 +139,8 @@ export default function Hero() {
           <a
             href="/cv.pdf"
             target="_blank"
-            className="group text-sm px-4 py-2 rounded-lg transition-all flex items-center gap-2"
+            className="group text-sm px-5 py-3 rounded-xl transition-all flex items-center gap-3"
             style={{
-              fontFamily: "var(--font-mono, monospace)",
               color: "var(--theme-secondary)",
               border: "1px solid var(--theme-card-border)",
             }}
@@ -157,28 +155,32 @@ export default function Hero() {
               ;(e.currentTarget as HTMLElement).style.background = "transparent"
             }}
           >
-            ↓ resume
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/>
+            </svg>
+            <span className="text-base font-medium">Resume</span>
           </a>
           <a
             href="mailto:osama.mohammed.work1@gmail.com"
-            className="group text-sm px-4 py-2 rounded-lg transition-all flex items-center gap-2"
+            className="group text-sm px-5 py-3 rounded-xl transition-all flex items-center gap-3"
             style={{
-              fontFamily: "var(--font-mono, monospace)",
               color: "var(--theme-secondary)",
               border: "1px solid var(--theme-card-border)",
+              background: "rgba(255,255,255,0.06)",
             }}
             onMouseEnter={e => {
               (e.currentTarget as HTMLElement).style.color = "var(--theme-primary)"
               ;(e.currentTarget as HTMLElement).style.borderColor = "var(--theme-card-hover-border)"
-              ;(e.currentTarget as HTMLElement).style.background = "var(--theme-card-bg)"
+              ;(e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.1)"
             }}
             onMouseLeave={e => {
               (e.currentTarget as HTMLElement).style.color = "var(--theme-secondary)"
               ;(e.currentTarget as HTMLElement).style.borderColor = "var(--theme-card-border)"
-              ;(e.currentTarget as HTMLElement).style.background = "transparent"
+              ;(e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.06)"
             }}
           >
-            ✉ hire me
+            <EmailIcon />
+            <span className="text-base font-medium">Hire Me</span>
           </a>
         </div>
 
