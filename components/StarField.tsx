@@ -7,22 +7,32 @@ const constellations = [
   {
     name: "Orion",
     stars: [
-      { x: -1.0, y:  1.4, size: 0.03,  name: "Betelgeuse" },
-      { x:  0.2, y:  1.6, size: 0.018, name: "Bellatrix" },
-      { x: -1.2, y:  0.4, size: 0.015, name: "Mintaka" },
-      { x: -0.8, y:  0.3, size: 0.016, name: "Alnilam" },
-      { x: -0.4, y:  0.2, size: 0.015, name: "Alnitak" },
-      { x: -1.3, y: -0.7, size: 0.015, name: "Saiph" },
-      { x:  0.1, y: -0.9, size: 0.025, name: "Rigel" },
+      { x: -2.5, y: 1.2,  size: 0.03,  name: "Betelgeuse" },
+      { x: -1.8, y: 1.5,  size: 0.018, name: "Bellatrix" },
+      { x: -2.2, y: 0.6,  size: 0.015, name: "Mintaka" },
+      { x: -2.0, y: 0.5,  size: 0.016, name: "Alnilam" },
+      { x: -1.8, y: 0.4,  size: 0.015, name: "Alnitak" },
+      { x: -2.4, y: -0.3, size: 0.015, name: "Saiph" },
+      { x: -1.6, y: -0.3, size: 0.025, name: "Rigel" },
     ],
     lines: [
-      [0, 1],
-      [0, 5],
-      [1, 6],
-      [5, 6],
+      [0, 1], [0, 5], [1, 6], [5, 6],
       [2, 3], [3, 4],
       [0, 2], [1, 4],
     ],
+  },
+  {
+    name: "Pleiades",
+    stars: [
+      { x:  0.2, y:  2.8, size: 0.014, name: "Alcyone" },
+      { x:  0.5, y:  3.0, size: 0.011, name: "Atlas" },
+      { x:  0.7, y:  2.7, size: 0.010, name: "Electra" },
+      { x:  0.3, y:  2.5, size: 0.010, name: "Maia" },
+      { x:  0.6, y:  2.5, size: 0.009, name: "Merope" },
+      { x:  0.9, y:  2.9, size: 0.009, name: "Taygeta" },
+      { x:  1.0, y:  2.6, size: 0.009, name: "Pleione" },
+    ],
+    lines: [],
   },
   {
     name: "Ursa Minor",
@@ -74,6 +84,7 @@ const constellations = [
     ],
   },
 ]
+
 
 
 

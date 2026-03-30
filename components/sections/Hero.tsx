@@ -139,7 +139,7 @@ export default function Hero() {
           <a
             href="/cv.pdf"
             target="_blank"
-            className="group text-sm px-5 py-3 rounded-xl transition-all flex items-center gap-3"
+            className="group px-3 py-1.5 rounded-lg transition-all flex items-center gap-2"
             style={{
               color: "var(--theme-secondary)",
               border: "1px solid var(--theme-card-border)",
@@ -155,14 +155,14 @@ export default function Hero() {
               ;(e.currentTarget as HTMLElement).style.background = "transparent"
             }}
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v12m0 0l-4-4m4 4l4-4M4 20h16"/>
             </svg>
-            <span className="text-base font-medium">Resume</span>
+            <span className="text-sm">Resume</span>
           </a>
           <a
             href="mailto:osama.mohammed.work1@gmail.com"
-            className="group text-sm px-5 py-3 rounded-xl transition-all flex items-center gap-3"
+            className="group px-3 py-1.5 rounded-lg transition-all flex items-center gap-2"
             style={{
               color: "var(--theme-secondary)",
               border: "1px solid var(--theme-card-border)",
@@ -180,7 +180,7 @@ export default function Hero() {
             }}
           >
             <EmailIcon />
-            <span className="text-base font-medium">Hire Me</span>
+            <span className="text-sm">Hire Me</span>
           </a>
         </div>
 
