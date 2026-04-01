@@ -48,13 +48,12 @@ const constellations = [
       { x:  2.5, y: -0.2, size: 0.013, name: "Yildun" },
       { x:  2.8, y: -1.2, size: 0.012, name: "Epsilon UMi" },
       { x:  3.0, y: -2.2, size: 0.012, name: "Delta UMi" },
-      { x:  3.6, y: -2.0, size: 0.015, name: "Zeta UMi" },
-      { x:  4.0, y: -1.3, size: 0.013, name: "Eta UMi" },
+     { x:  3.6, y: -2.0, size: 0.015, name: "Zeta UMi" },
+      //{ x:  4.0, y: -1.3, size: 0.013, name: "Eta UMi" },
       { x:  3.5, y: -0.9, size: 0.015, name: "Kochab" },
     ],
     lines: [
-      [0, 1], [1, 2], [2, 3],
-      [3, 4], [4, 5], [5, 6], [6, 3],
+      [0, 1], [1, 2], [2, 3], [4, 3], [4, 5],[5,2]
     ],
   },
   {
