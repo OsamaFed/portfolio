@@ -9,9 +9,9 @@ const constellations = [
       { x: -3.5, y:  2.0, size: 0.030, name: "Betelgeuse" },
       { x: -1.5, y:  2.3, size: 0.018, name: "Bellatrix" },
       { x: -2.3, y:  3.2, size: 0.013, name: "Mu Ori" },
-      { x: -3.0, y:  0.5, size: 0.015, name: "Mintaka" },
-      { x: -2.5, y:  0.7, size: 0.016, name: "Alnilam" },
-      { x: -2.0, y:  0.9, size: 0.015, name: "Alnitak" },
+      { x: -3.0, y:  0.5, size: 0.040, name: "Mintaka" },
+      { x: -2.5, y:  0.7, size: 0.040, name: "Alnilam" },
+      { x: -2.0, y:  0.9, size: 0.040, name: "Alnitak" },
       { x: -3.3, y: -0.8, size: 0.015, name: "Saiph" },
       { x: -1.4, y: -1.0, size: 0.025, name: "Rigel" },
       { x: 0.2, y:  2.8, size: 0.011, name: "Pi1 Ori" },
@@ -48,9 +48,8 @@ const constellations = [
       { x:  2.5, y: -0.2, size: 0.013, name: "Yildun" },
       { x:  2.8, y: -1.2, size: 0.012, name: "Epsilon UMi" },
       { x:  3.0, y: -2.2, size: 0.012, name: "Delta UMi" },
-     { x:  3.6, y: -2.0, size: 0.015, name: "Zeta UMi" },
-      //{ x:  4.0, y: -1.3, size: 0.013, name: "Eta UMi" },
-      { x:  3.5, y: -0.9, size: 0.015, name: "Kochab" },
+     { x:  2.2, y: -2.0, size: 0.015, name: "Zeta UMi" },
+      { x:  2.1, y: -0.9, size: 0.015, name: "Kochab" },
     ],
     lines: [
       [0, 1], [1, 2], [2, 3], [4, 3], [4, 5],[5,2]
@@ -111,7 +110,7 @@ export default function StarField() {
     mountRef.current.appendChild(renderer.domElement)
 
     const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(110, W / H, 0.1, 100)
+    const camera = new THREE.PerspectiveCamera(85, W / H, 0.1, 100)
     camera.position.z = 8
 
     const bgGeo = new THREE.BufferGeometry()
