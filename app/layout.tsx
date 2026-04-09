@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body>
         <ThemeProvider>
-          <StarField />
+          {/* <StarField /> */}
           <Navbar />
           <main>{children}</main>
           <Footer />
