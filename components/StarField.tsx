@@ -97,129 +97,79 @@ const constellations = [
     ],
   },
   {
-    name: "Pleiades",
-    stars: [
-      {
-        name: "Alcyone",
-        x: 3.5,
-        y: 4.5,
-        size: 0.013
-      },
-      {
-        name: "Atlas",
-        x: 3.8,
-        y: 4.8,
-        size: 0.010
-      },
-      {
-        name: "Electra",
-        x: 4.1,
-        y: 4.4,
-        size: 0.009
-      },
-      {
-        name: "Maia",
-        x: 3.6,
-        y: 4.2,
-        size: 0.009
-      },
-      {
-        name: "Merope",
-        x: 4.0,
-        y: 4.1,
-        size: 0.008
-      },
-      {
-        name: "Taygeta",
-        x: 4.3,
-        y: 4.7,
-        size: 0.008
-      },
-      {
-        name: "Pleione",
-        x: 4.4,
-        y: 4.3,
-        size: 0.008
-      },
-    ],
-    lines: [],
-  },
-  {
     name: "Taurus",
     stars: [
-      {
-        name: "Aldebaran",//y tau
-        x: 1.8,
-        y: 1.2,
-        size: 0.020
-      },
-      {
-        name: "Theta Tau",//02 tau
-        x: 1.8,
-        y: 1.7,
-        size: 0.020
-      },
-      {
-        name: "Alpha Tau",// 02 twin
-        x: 1.75,
-        y: 1.7,
-        size: 0.020
-      },
-      {
-        name: "Gamma Tau",//3 tau
-        x: 2.7,
-        y: 2.1,
-        size: 0.020
-      },
-      {
-        name: "Delta Tau",//Aldebaran
-        x: 2.0,
-        y: 2.2,
-        size: 0.045
-      },
-      {
-        name: "Epsilon Tau", // A tau
-        x: 2.4,
-        y: 1.7,
-        size: 0.020
-      },
-      {
-        name: "O Tau",
-        x: 2.3,
-        y: 1.6,
-        size: 0.020
-      },
-      {
-        name: "Zeta Tau",
-        x: 2.4,
-        y: 3.0,
-        size: 0.018
-      },
-      {
-        name: "Beta Tau",//Elnath
-        x: 3.2,
-        y: 2.9,
-        size: 0.025
-      },
-      {
-        name: "T tau",
-        x: 3.1,
-        y: 2.4,
-        size: 0.018
-      },
-      {
-        name: "Lambda Tau",// a tau the lower one
-        x: 1.5,
-        y: 0.2,
-        size: 0.013
-      },
-      {
-        name: "Xi Tau",
-        x: 1.3,
-        y: -0.8,
-        size: 0.015
-      },
+      { name: "Aldebaran", x: 1.8, y: 1.2, size: 0.020 },
+      { name: "Theta Tau", x: 1.8, y: 1.7, size: 0.020 },
+      { name: "Alpha Tau", x: 1.75, y: 1.7, size: 0.020 },
+      { name: "Gamma Tau", x: 2.7, y: 2.1, size: 0.020 },
+      { name: "Delta Tau", x: 2.0, y: 2.2, size: 0.045 },
+      { name: "Epsilon Tau", x: 2.4, y: 1.7, size: 0.020 },
+      { name: "O Tau", x: 2.3, y: 1.6, size: 0.020 },
+      { name: "Zeta Tau", x: 2.4, y: 3.0, size: 0.018 },
+      { name: "Beta Tau", x: 3.2, y: 2.9, size: 0.025 },
+      { name: "T tau", x: 3.1, y: 2.4, size: 0.018 },
+      { name: "Lambda Tau", x: 1.5, y: 0.2, size: 0.013 },
+      { name: "Xi Tau", x: 1.3, y: -0.8, size: 0.015 },
+      { name: "Atlas ref", x: 3.3, y: -0.2, size: 0 },
     ],
+    lines: [
+      [4,7],[4,3],[4,2],[2,0],[0,10],[0,6],[10,11],[5,3],[3,9],[9,8],[6,5],
+      [6,12],
+    ],
+  },
+  {
+    name: "Pleiades",
+    stars: [
+      { name: "Atlas",
+        x: 3.3, 
+        y: -0.2, 
+        size: 0.035 
+      },
+      { name:"Pleione", 
+        x: 3.4, 
+        y: -0.2, 
+        size: 0.025},
+       { name: "Alcyone",
+         x: 3.4,
+         y: -0.5,
+         size: 0.035},
+      { name: "Merope", 
+        x: 3.29,
+        y: -0.8, 
+        size: 0.035 },
+       { name: "Electra",
+         x: 3.6, 
+         y: -1.0,
+         size: 0.036},
+       { name: "celaeno",
+         x: 3.7,
+         y: -1.0,
+         size: 0.035 },
+       { name: "Taygeta",
+         x: 3.82,
+         y: -0.8, 
+         size: 0.035 },
+      { name: "Maia",
+        x: 3.7,
+        y: -0.7, 
+        size: 0.035
+      },
+      { name: "s1",  x: 3.2, y: -0.6, size: 0.015 },
+      { name: "s2",  x: 3.4, y: -0.4, size: 0.015 },
+      { name: "s3",  x: 3.1, y: -0.3, size: 0.015 },
+      { name: "s4",  x: 3.6, y: -0.8, size: 0.015 },
+      { name: "s5",  x: 3.2, y: -0.9, size: 0.015 },
+      { name: "s6",  x: 3.5, y: -0.5, size: 0.015 },
+      { name: "s7",  x: 3.3, y: -0.7, size: 0.015 },
+      { name: "s8",  x: 3.7, y: -0.6, size: 0.015 },
+      { name: "s9",  x: 3.0, y: -0.7, size: 0.015 },
+      { name: "s10", x: 3.4, y: -1.0, size: 0.015 },
+      { name: "s11", x: 3.1, y: -0.5, size: 0.015 },
+      { name: "s12", x: 3.6, y: -0.3, size: 0.015 },
+    ],
+
+
     lines: [],
   },
   // {
@@ -266,184 +216,184 @@ const constellations = [
   //     [0, 1], [1, 2], [2, 3], [4, 3], [4, 5], [5, 2]
   //   ],
   // },
-  {
-    name: "Cassiopeia",
-    stars: [
-      {
-        name: "Caph",
-        x: -4.5,
-        y: -2.0,
-        size: 0.015
-      },
-      {
-        name: "Schedar",
-        x: -3.8,
-        y: -1.5,
-        size: 0.018
-      },
-      {
-        name: "Gamma Cas",
-        x: -3.0,
-        y: -2.0,
-        size: 0.015
-      },
-      {
-        name: "Ruchbah",
-        x: -2.2,
-        y: -1.5,
-        size: 0.015
-      },
-      {
-        name: "Segin",
-        x: -1.5,
-        y: -2.1,
-        size: 0.014
-      },
-    ],
-    lines: [
-      [0, 1], [1, 2], [2, 3], [3, 4],
-    ],
-  },
-  {
-    name: "Scorpius",
-    stars: [
-      {
-        name: "Antares",
-        x: 1.5,
-        y: -3.5,
-        size: 0.028
-      },
-      {
-        name: "Graffias",
-        x: 0.8,
-        y: -2.5,
-        size: 0.015
-      },
-      {
-        name: "Dschubba",
-        x: 1.5,
-        y: -2.3,
-        size: 0.015
-      },
-      {
-        name: "Pi Sco",
-        x: 2.2,
-        y: -2.5,
-        size: 0.014
-      },
-      {
-        name: "Tau Sco",
-        x: 1.5,
-        y: -4.5,
-        size: 0.016
-      },
-      {
-        name: "Epsilon Sco",
-        x: 1.8,
-        y: -5.3,
-        size: 0.015
-      },
-      {
-        name: "Mu Sco",
-        x: 2.2,
-        y: -6.0,
-        size: 0.015
-      },
-      {
-        name: "Zeta Sco",
-        x: 2.8,
-        y: -6.6,
-        size: 0.016
-      },
-      {
-        name: "Eta Sco",
-        x: 3.3,
-        y: -6.8,
-        size: 0.015
-      },
-      {
-        name: "Theta Sco",
-        x: 3.7,
-        y: -6.4,
-        size: 0.015
-      },
-      {
-        name: "Iota Sco",
-        x: 3.8,
-        y: -5.9,
-        size: 0.016
-      },
-    ],
-    lines: [
-      [0, 1], [0, 2], [0, 3],
-      [0, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10],
-    ],
-  },
-  {
-    name: "Gemini",
-    stars: [
-      {
-        name: "Pollux",
-        x: -0.5,
-        y: 3.8,
-        size: 0.020
-      },
-      {
-        name: "Castor",
-        x: -1.0,
-        y: 4.0,
-        size: 0.018
-      },
-      {
-        name: "Pollux foot1",
-        x: -0.8,
-        y: 3.0,
-        size: 0.012
-      },
-      {
-        name: "Castor foot1",
-        x: -1.5,
-        y: 2.8,
-        size: 0.012
-      },
-      {
-        name: "Pollux foot2",
-        x: -0.6,
-        y: 2.2,
-        size: 0.012
-      },
-      {
-        name: "Castor foot2",
-        x: -1.3,
-        y: 2.0,
-        size: 0.012
-      },
-      {
-        name: "Alhena",
-        x: -0.4,
-        y: 1.5,
-        size: 0.013
-      },
-      {
-        name: "Mebsuda",
-        x: -1.8,
-        y: 3.5,
-        size: 0.011
-      },
-      {
-        name: "Wasat",
-        x: -2.0,
-        y: 2.8,
-        size: 0.011
-      },
-    ],
-    lines: [
-      [0, 2], [2, 4], [4, 6],
-      [1, 3], [3, 5],
-      [1, 7], [7, 8], [8, 5],
-      [0, 1],
-    ],
-  },
+  // {
+  //   name: "Cassiopeia",
+  //   stars: [
+  //     {
+  //       name: "Caph",
+  //       x: -4.5,
+  //       y: -2.0,
+  //       size: 0.015
+  //     },
+  //     {
+  //       name: "Schedar",
+  //       x: -3.8,
+  //       y: -1.5,
+  //       size: 0.018
+  //     },
+  //     {
+  //       name: "Gamma Cas",
+  //       x: -3.0,
+  //       y: -2.0,
+  //       size: 0.015
+  //     },
+  //     {
+  //       name: "Ruchbah",
+  //       x: -2.2,
+  //       y: -1.5,
+  //       size: 0.015
+  //     },
+  //     {
+  //       name: "Segin",
+  //       x: -1.5,
+  //       y: -2.1,
+  //       size: 0.014
+  //     },
+  //   ],
+  //   lines: [
+  //     [0, 1], [1, 2], [2, 3], [3, 4],
+  //   ],
+  // },
+  // {
+  //   name: "Scorpius",
+  //   stars: [
+  //     {
+  //       name: "Antares",
+  //       x: 1.5,
+  //       y: -3.5,
+  //       size: 0.028
+  //     },
+  //     {
+  //       name: "Graffias",
+  //       x: 0.8,
+  //       y: -2.5,
+  //       size: 0.015
+  //     },
+  //     {
+  //       name: "Dschubba",
+  //       x: 1.5,
+  //       y: -2.3,
+  //       size: 0.015
+  //     },
+  //     {
+  //       name: "Pi Sco",
+  //       x: 2.2,
+  //       y: -2.5,
+  //       size: 0.014
+  //     },
+  //     {
+  //       name: "Tau Sco",
+  //       x: 1.5,
+  //       y: -4.5,
+  //       size: 0.016
+  //     },
+  //     {
+  //       name: "Epsilon Sco",
+  //       x: 1.8,
+  //       y: -5.3,
+  //       size: 0.015
+  //     },
+  //     {
+  //       name: "Mu Sco",
+  //       x: 2.2,
+  //       y: -6.0,
+  //       size: 0.015
+  //     },
+  //     {
+  //       name: "Zeta Sco",
+  //       x: 2.8,
+  //       y: -6.6,
+  //       size: 0.016
+  //     },
+  //     {
+  //       name: "Eta Sco",
+  //       x: 3.3,
+  //       y: -6.8,
+  //       size: 0.015
+  //     },
+  //     {
+  //       name: "Theta Sco",
+  //       x: 3.7,
+  //       y: -6.4,
+  //       size: 0.015
+  //     },
+  //     {
+  //       name: "Iota Sco",
+  //       x: 3.8,
+  //       y: -5.9,
+  //       size: 0.016
+  //     },
+  //   ],
+  //   lines: [
+  //     [0, 1], [0, 2], [0, 3],
+  //     [0, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10],
+  //   ],
+  // },
+  //{
+  //   name: "Gemini",
+  //   stars: [
+  //     {
+  //       name: "Pollux",
+  //       x: -0.5,
+  //       y: 3.8,
+  //       size: 0.020
+  //     },
+  //     {
+  //       name: "Castor",
+  //       x: -1.0,
+  //       y: 4.0,
+  //       size: 0.018
+  //     },
+  //     {
+  //       name: "Pollux foot1",
+  //       x: -0.8,
+  //       y: 3.0,
+  //       size: 0.012
+  //     },
+  //     {
+  //       name: "Castor foot1",
+  //       x: -1.5,
+  //       y: 2.8,
+  //       size: 0.012
+  //     },
+  //     {
+  //       name: "Pollux foot2",
+  //       x: -0.6,
+  //       y: 2.2,
+  //       size: 0.012
+  //     },
+  //     {
+  //       name: "Castor foot2",
+  //       x: -1.3,
+  //       y: 2.0,
+  //       size: 0.012
+  //     },
+  //     {
+  //       name: "Alhena",
+  //       x: -0.4,
+  //       y: 1.5,
+  //       size: 0.013
+  //     },
+  //     {
+  //       name: "Mebsuda",
+  //       x: -1.8,
+  //       y: 3.5,
+  //       size: 0.011
+  //     },
+  //     {
+  //       name: "Wasat",
+  //       x: -2.0,
+  //       y: 2.8,
+  //       size: 0.011
+  //     },
+  //   ],
+  //   lines: [
+  //     [0, 2], [2, 4], [4, 6],
+  //     [1, 3], [3, 5],
+  //     [1, 7], [7, 8], [8, 5],
+  //     [0, 1],
+  //   ],
+  // },
 ]
 
 const BG_STARS = 200
@@ -466,7 +416,7 @@ export default function StarField() {
     mountRef.current.appendChild(renderer.domElement)
 
     const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(120, W / H, 0.1, 100)
+    const camera = new THREE.PerspectiveCamera(80, W / H, 0.1, 100)
     camera.position.z = 8
 
     const bgGeo = new THREE.BufferGeometry()
