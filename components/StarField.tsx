@@ -1,533 +1,312 @@
-"use client"
-import { useEffect, useRef } from "react"
-import * as THREE from "three"
+"use client";
+import { useEffect, useRef } from "react";
+import * as THREE from "three";
+
+const orionOffset      = { x: 0, y: 0 }
+const taurusOffset     = { x: 0, y: 0 }
+const pleiadesOffset   = { x: 0, y: 0 }
+const ursaOffset       = { x: 0, y: -3 }
+const cassiopeiaOffset = { x: 1, y: -3 }
+const scorpiusOffset   = { x: 0, y: -4 }
 
 const constellations = [
   {
     name: "Orion",
     stars: [
-      {
-        name: "Betelgeuse",
-        x: -3.5,
-        y: 2.0,
-        size: 0.030
-      },
-      {
-        name: "Bellatrix",
-        x: -1.5,
-        y: 2.3,
-        size: 0.018
-      },
-      {
-        name: "Mu Ori",
-        x: -2.3,
-        y: 3.2,
-        size: 0.013
-      },
-      {
-        name: "Mintaka",
-        x: -3.0,
-        y: 0.5,
-        size: 0.040
-      },
-      {
-        name: "Alnilam",
-        x: -2.5,
-        y: 0.7,
-        size: 0.040
-      },
-      {
-        name: "Alnitak",
-        x: -2.0,
-        y: 0.9,
-        size: 0.040
-      },
-      {
-        name: "Saiph",
-        x: -3.3,
-        y: -0.8,
-        size: 0.015
-      },
-      {
-        name: "Rigel",
-        x: -1.4,
-        y: -1.0,
-        size: 0.025
-      },
-      {
-        name: "Pi1 Ori",
-        x: 0.2,
-        y: 2.8,
-        size: 0.011
-      },
-      {
-        name: "Pi2 Ori",
-        x: 0.5,
-        y: 2.2,
-        size: 0.011
-      },
-      {
-        name: "Pi3 Ori",
-        x: 0.8,
-        y: 1.5,
-        size: 0.012
-      },
-      {
-        name: "Pi4 Ori",
-        x: 1.0,
-        y: 0.8,
-        size: 0.011
-      },
-      {
-        name: "Pi5 Ori",
-        x: 1.1,
-        y: 0.1,
-        size: 0.011
-      },
-      {
-        name: "Pi6 Ori",
-        x: 0.9,
-        y: -0.6,
-        size: 0.011
-      },
+      { name: "Betelgeuse",  x: orionOffset.x + -3.5, y: orionOffset.y + 2.0,  size: 0.03  },
+      { name: "Bellatrix",   x: orionOffset.x + -1.5, y: orionOffset.y + 2.3,  size: 0.018 },
+      { name: "Mu Ori",      x: orionOffset.x + -2.3, y: orionOffset.y + 3.2,  size: 0.013 },
+      { name: "Mintaka",     x: orionOffset.x + -3.0, y: orionOffset.y + 0.5,  size: 0.04  },
+      { name: "Alnilam",     x: orionOffset.x + -2.5, y: orionOffset.y + 0.7,  size: 0.04  },
+      { name: "Alnitak",     x: orionOffset.x + -2.0, y: orionOffset.y + 0.9,  size: 0.04  },
+      { name: "Saiph",       x: orionOffset.x + -3.3, y: orionOffset.y + -0.8, size: 0.015 },
+      { name: "Rigel",       x: orionOffset.x + -1.4, y: orionOffset.y + -1.0, size: 0.025 },
+      { name: "Pi1 Ori",     x: orionOffset.x +  0.2, y: orionOffset.y + 2.8,  size: 0.011 },
+      { name: "Pi2 Ori",     x: orionOffset.x +  0.5, y: orionOffset.y + 2.2,  size: 0.011 },
+      { name: "Pi3 Ori",     x: orionOffset.x +  0.8, y: orionOffset.y + 1.5,  size: 0.012 },
+      { name: "Pi4 Ori",     x: orionOffset.x +  1.0, y: orionOffset.y + 0.8,  size: 0.011 },
+      { name: "Pi5 Ori",     x: orionOffset.x +  1.1, y: orionOffset.y + 0.1,  size: 0.011 },
+      { name: "Pi6 Ori",     x: orionOffset.x +  0.9, y: orionOffset.y + -0.6, size: 0.011 },
     ],
-    lines: [
-      [0, 2], [2, 1], [1, 5], [3, 4], [3, 6], [4, 5], [3, 0], [6, 7], [7, 5],
-      [1, 10], [10, 11], [11, 12], [12, 13], [10, 9], [9, 8],
-    ],
+    delay: 0,
+    lines: [[0,2],[2,1],[1,5],[3,4],[3,6],[4,5],[3,0],[6,7],[7,5],[1,10],[10,11],[11,12],[12,13],[10,9],[9,8]],
   },
   {
     name: "Taurus",
     stars: [
-      { name: "Aldebaran", x: 1.8, y: 1.2, size: 0.020 },
-      { name: "Theta Tau", x: 1.8, y: 1.7, size: 0.020 },
-      { name: "Alpha Tau", x: 1.75, y: 1.7, size: 0.020 },
-      { name: "Gamma Tau", x: 2.7, y: 2.1, size: 0.020 },
-      { name: "Delta Tau", x: 2.0, y: 2.2, size: 0.045 },
-      { name: "Epsilon Tau", x: 2.4, y: 1.7, size: 0.020 },
-      { name: "O Tau", x: 2.3, y: 1.6, size: 0.020 },
-      { name: "Zeta Tau", x: 2.4, y: 3.0, size: 0.018 },
-      { name: "Beta Tau", x: 3.2, y: 2.9, size: 0.025 },
-      { name: "T tau", x: 3.1, y: 2.4, size: 0.018 },
-      { name: "Lambda Tau", x: 1.5, y: 0.2, size: 0.013 },
-      { name: "Xi Tau", x: 1.3, y: -0.8, size: 0.015 },
-      { name: "Atlas ref", x: 3.3, y: -0.2, size: 0 },
+      { name: "Aldebaran",   x: taurusOffset.x + 1.8,  y: taurusOffset.y + 1.2,  size: 0.02  },
+      { name: "Theta Tau",   x: taurusOffset.x + 1.8,  y: taurusOffset.y + 1.7,  size: 0.02  },
+      { name: "Alpha Tau",   x: taurusOffset.x + 1.75, y: taurusOffset.y + 1.7,  size: 0.02  },
+      { name: "Gamma Tau",   x: taurusOffset.x + 2.7,  y: taurusOffset.y + 2.1,  size: 0.02  },
+      { name: "Delta Tau",   x: taurusOffset.x + 2.0,  y: taurusOffset.y + 2.2,  size: 0.045 },
+      { name: "Epsilon Tau", x: taurusOffset.x + 2.4,  y: taurusOffset.y + 1.7,  size: 0.02  },
+      { name: "O Tau",       x: taurusOffset.x + 2.3,  y: taurusOffset.y + 1.6,  size: 0.02  },
+      { name: "Zeta Tau",    x: taurusOffset.x + 2.4,  y: taurusOffset.y + 3.0,  size: 0.018 },
+      { name: "Beta Tau",    x: taurusOffset.x + 3.2,  y: taurusOffset.y + 2.9,  size: 0.025 },
+      { name: "T tau",       x: taurusOffset.x + 3.1,  y: taurusOffset.y + 2.4,  size: 0.018 },
+      { name: "Lambda Tau",  x: taurusOffset.x + 1.5,  y: taurusOffset.y + 0.2,  size: 0.013 },
+      { name: "Xi Tau",      x: taurusOffset.x + 1.3,  y: taurusOffset.y + -0.8, size: 0.015 },
+      { name: "Atlas ref",   x: taurusOffset.x + 3.3,  y: taurusOffset.y + -0.2, size: 0     },
     ],
-    lines: [
-      [4,7],[4,3],[4,2],[2,0],[0,10],[0,6],[10,11],[5,3],[3,9],[9,8],[6,5],
-      [6,12],
-    ],
+    delay: 0.1,
+    lines: [[4,7],[4,3],[4,2],[2,0],[0,10],[0,6],[10,11],[5,3],[3,9],[9,8],[6,5],[6,12]],
   },
   {
     name: "Pleiades",
     stars: [
-      { name: "Atlas",
-        x: 3.3, 
-        y: -0.2, 
-        size: 0.035 
-      },
-      { name:"Pleione", 
-        x: 3.4, 
-        y: -0.2, 
-        size: 0.025},
-       { name: "Alcyone",
-         x: 3.4,
-         y: -0.5,
-         size: 0.035},
-      { name: "Merope", 
-        x: 3.29,
-        y: -0.8, 
-        size: 0.035 },
-       { name: "Electra",
-         x: 3.6, 
-         y: -1.0,
-         size: 0.036},
-       { name: "celaeno",
-         x: 3.7,
-         y: -1.0,
-         size: 0.035 },
-       { name: "Taygeta",
-         x: 3.82,
-         y: -0.8, 
-         size: 0.035 },
-      { name: "Maia",
-        x: 3.7,
-        y: -0.7, 
-        size: 0.035
-      },
-      { name: "s1",  x: 3.2, y: -0.6, size: 0.015 },
-      { name: "s2",  x: 3.4, y: -0.4, size: 0.015 },
-      { name: "s3",  x: 3.1, y: -0.3, size: 0.015 },
-      { name: "s4",  x: 3.6, y: -0.8, size: 0.015 },
-      { name: "s5",  x: 3.2, y: -0.9, size: 0.015 },
-      { name: "s6",  x: 3.5, y: -0.5, size: 0.015 },
-      { name: "s7",  x: 3.3, y: -0.7, size: 0.015 },
-      { name: "s8",  x: 3.7, y: -0.6, size: 0.015 },
-      { name: "s9",  x: 3.0, y: -0.7, size: 0.015 },
-      { name: "s10", x: 3.4, y: -1.0, size: 0.015 },
-      { name: "s11", x: 3.1, y: -0.5, size: 0.015 },
-      { name: "s12", x: 3.6, y: -0.3, size: 0.015 },
+      { name: "Atlas",   x: pleiadesOffset.x + 3.3,  y: pleiadesOffset.y + -0.2, size: 0.035 },
+      { name: "Pleione", x: pleiadesOffset.x + 3.4,  y: pleiadesOffset.y + -0.2, size: 0.025 },
+      { name: "Alcyone", x: pleiadesOffset.x + 3.4,  y: pleiadesOffset.y + -0.5, size: 0.035 },
+      { name: "Merope",  x: pleiadesOffset.x + 3.29, y: pleiadesOffset.y + -0.8, size: 0.035 },
+      { name: "Electra", x: pleiadesOffset.x + 3.6,  y: pleiadesOffset.y + -1.0, size: 0.036 },
+      { name: "celaeno", x: pleiadesOffset.x + 3.7,  y: pleiadesOffset.y + -1.0, size: 0.035 },
+      { name: "Taygeta", x: pleiadesOffset.x + 3.82, y: pleiadesOffset.y + -0.8, size: 0.035 },
+      { name: "Maia",    x: pleiadesOffset.x + 3.7,  y: pleiadesOffset.y + -0.7, size: 0.035 },
+      { name: "s1",  x: pleiadesOffset.x + 3.2, y: pleiadesOffset.y + -0.6, size: 0.015 },
+      { name: "s2",  x: pleiadesOffset.x + 3.4, y: pleiadesOffset.y + -0.4, size: 0.015 },
+      { name: "s3",  x: pleiadesOffset.x + 3.1, y: pleiadesOffset.y + -0.3, size: 0.015 },
+      { name: "s4",  x: pleiadesOffset.x + 3.6, y: pleiadesOffset.y + -0.8, size: 0.015 },
+      { name: "s5",  x: pleiadesOffset.x + 3.2, y: pleiadesOffset.y + -0.9, size: 0.015 },
+      { name: "s6",  x: pleiadesOffset.x + 3.5, y: pleiadesOffset.y + -0.5, size: 0.015 },
+      { name: "s7",  x: pleiadesOffset.x + 3.3, y: pleiadesOffset.y + -0.7, size: 0.015 },
+      { name: "s8",  x: pleiadesOffset.x + 3.7, y: pleiadesOffset.y + -0.6, size: 0.015 },
+      { name: "s9",  x: pleiadesOffset.x + 3.0, y: pleiadesOffset.y + -0.7, size: 0.015 },
+      { name: "s10", x: pleiadesOffset.x + 3.4, y: pleiadesOffset.y + -1.0, size: 0.015 },
+      { name: "s11", x: pleiadesOffset.x + 3.1, y: pleiadesOffset.y + -0.5, size: 0.015 },
+      { name: "s12", x: pleiadesOffset.x + 3.6, y: pleiadesOffset.y + -0.3, size: 0.015 },
     ],
-
-
+    delay: 0.15,
     lines: [],
   },
-  // {
-  //   name: "Ursa Minor",
-  //   stars: [
-  //     {
-  //       name: "Polaris",
-  //       x: 2.0,
-  //       y: 1.0,
-  //       size: 0.022
-  //     },
-  //     {
-  //       name: "Yildun",
-  //       x: 2.5,
-  //       y: -0.2,
-  //       size: 0.013
-  //     },
-  //     {
-  //       name: "Epsilon UMi",
-  //       x: 2.8,
-  //       y: -1.2,
-  //       size: 0.012
-  //     },
-  //     {
-  //       name: "Delta UMi",
-  //       x: 3.0,
-  //       y: -2.2,
-  //       size: 0.012
-  //     },
-  //     {
-  //       name: "Zeta UMi",
-  //       x: 2.2,
-  //       y: -2.0,
-  //       size: 0.015
-  //     },
-  //     {
-  //       name: "Kochab",
-  //       x: 2.1,
-  //       y: -0.9,
-  //       size: 0.015
-  //     },
-  //   ],
-  //   lines: [
-  //     [0, 1], [1, 2], [2, 3], [4, 3], [4, 5], [5, 2]
-  //   ],
-  // },
-  // {
-  //   name: "Cassiopeia",
-  //   stars: [
-  //     {
-  //       name: "Caph",
-  //       x: -4.5,
-  //       y: -2.0,
-  //       size: 0.015
-  //     },
-  //     {
-  //       name: "Schedar",
-  //       x: -3.8,
-  //       y: -1.5,
-  //       size: 0.018
-  //     },
-  //     {
-  //       name: "Gamma Cas",
-  //       x: -3.0,
-  //       y: -2.0,
-  //       size: 0.015
-  //     },
-  //     {
-  //       name: "Ruchbah",
-  //       x: -2.2,
-  //       y: -1.5,
-  //       size: 0.015
-  //     },
-  //     {
-  //       name: "Segin",
-  //       x: -1.5,
-  //       y: -2.1,
-  //       size: 0.014
-  //     },
-  //   ],
-  //   lines: [
-  //     [0, 1], [1, 2], [2, 3], [3, 4],
-  //   ],
-  // },
-  // {
-  //   name: "Scorpius",
-  //   stars: [
-  //     {
-  //       name: "Antares",
-  //       x: 1.5,
-  //       y: -3.5,
-  //       size: 0.028
-  //     },
-  //     {
-  //       name: "Graffias",
-  //       x: 0.8,
-  //       y: -2.5,
-  //       size: 0.015
-  //     },
-  //     {
-  //       name: "Dschubba",
-  //       x: 1.5,
-  //       y: -2.3,
-  //       size: 0.015
-  //     },
-  //     {
-  //       name: "Pi Sco",
-  //       x: 2.2,
-  //       y: -2.5,
-  //       size: 0.014
-  //     },
-  //     {
-  //       name: "Tau Sco",
-  //       x: 1.5,
-  //       y: -4.5,
-  //       size: 0.016
-  //     },
-  //     {
-  //       name: "Epsilon Sco",
-  //       x: 1.8,
-  //       y: -5.3,
-  //       size: 0.015
-  //     },
-  //     {
-  //       name: "Mu Sco",
-  //       x: 2.2,
-  //       y: -6.0,
-  //       size: 0.015
-  //     },
-  //     {
-  //       name: "Zeta Sco",
-  //       x: 2.8,
-  //       y: -6.6,
-  //       size: 0.016
-  //     },
-  //     {
-  //       name: "Eta Sco",
-  //       x: 3.3,
-  //       y: -6.8,
-  //       size: 0.015
-  //     },
-  //     {
-  //       name: "Theta Sco",
-  //       x: 3.7,
-  //       y: -6.4,
-  //       size: 0.015
-  //     },
-  //     {
-  //       name: "Iota Sco",
-  //       x: 3.8,
-  //       y: -5.9,
-  //       size: 0.016
-  //     },
-  //   ],
-  //   lines: [
-  //     [0, 1], [0, 2], [0, 3],
-  //     [0, 4], [4, 5], [5, 6], [6, 7], [7, 8], [8, 9], [9, 10],
-  //   ],
-  // },
-  //{
-  //   name: "Gemini",
-  //   stars: [
-  //     {
-  //       name: "Pollux",
-  //       x: -0.5,
-  //       y: 3.8,
-  //       size: 0.020
-  //     },
-  //     {
-  //       name: "Castor",
-  //       x: -1.0,
-  //       y: 4.0,
-  //       size: 0.018
-  //     },
-  //     {
-  //       name: "Pollux foot1",
-  //       x: -0.8,
-  //       y: 3.0,
-  //       size: 0.012
-  //     },
-  //     {
-  //       name: "Castor foot1",
-  //       x: -1.5,
-  //       y: 2.8,
-  //       size: 0.012
-  //     },
-  //     {
-  //       name: "Pollux foot2",
-  //       x: -0.6,
-  //       y: 2.2,
-  //       size: 0.012
-  //     },
-  //     {
-  //       name: "Castor foot2",
-  //       x: -1.3,
-  //       y: 2.0,
-  //       size: 0.012
-  //     },
-  //     {
-  //       name: "Alhena",
-  //       x: -0.4,
-  //       y: 1.5,
-  //       size: 0.013
-  //     },
-  //     {
-  //       name: "Mebsuda",
-  //       x: -1.8,
-  //       y: 3.5,
-  //       size: 0.011
-  //     },
-  //     {
-  //       name: "Wasat",
-  //       x: -2.0,
-  //       y: 2.8,
-  //       size: 0.011
-  //     },
-  //   ],
-  //   lines: [
-  //     [0, 2], [2, 4], [4, 6],
-  //     [1, 3], [3, 5],
-  //     [1, 7], [7, 8], [8, 5],
-  //     [0, 1],
-  //   ],
-  // },
+  {
+    name: "Ursa Minor",
+    stars: [
+      { name: "Polaris",     x: ursaOffset.x + 2.0, y: ursaOffset.y + 1.0,  size: 0.022 },
+      { name: "Yildun",      x: ursaOffset.x + 2.5, y: ursaOffset.y + -0.2, size: 0.013 },
+      { name: "Epsilon UMi", x: ursaOffset.x + 2.8, y: ursaOffset.y + -1.2, size: 0.012 },
+      { name: "Delta UMi",   x: ursaOffset.x + 3.0, y: ursaOffset.y + -2.2, size: 0.012 },
+      { name: "Zeta UMi",    x: ursaOffset.x + 2.2, y: ursaOffset.y + -2.0, size: 0.015 },
+      { name: "Kochab",      x: ursaOffset.x + 2.1, y: ursaOffset.y + -0.9, size: 0.015 },
+    ],
+    delay: 0.4,
+    lines: [[0,1],[1,2],[2,3],[4,3],[4,5],[5,2]],
+  },
+  {
+    name: "Cassiopeia",
+    stars: [
+      { name: "Caph",      x: cassiopeiaOffset.x + -4.5, y: cassiopeiaOffset.y + -2.0, size: 0.015 },
+      { name: "Schedar",   x: cassiopeiaOffset.x + -3.8, y: cassiopeiaOffset.y + -1.5, size: 0.018 },
+      { name: "Gamma Cas", x: cassiopeiaOffset.x + -3.0, y: cassiopeiaOffset.y + -2.0, size: 0.015 },
+      { name: "Ruchbah",   x: cassiopeiaOffset.x + -2.2, y: cassiopeiaOffset.y + -1.5, size: 0.015 },
+      { name: "Segin",     x: cassiopeiaOffset.x + -1.5, y: cassiopeiaOffset.y + -2.1, size: 0.014 },
+    ],
+    delay: 0.6,
+    lines: [[0,1],[1,2],[2,3],[3,4]],
+  },
+  {
+    name: "Scorpius",
+    stars: [
+      { name: "Antares",     x: scorpiusOffset.x + 1.5, y: scorpiusOffset.y + -3.5, size: 0.120 },//قلب العقرب 
+      { name: "acrab",
+        x: scorpiusOffset.x + 1.6,
+        y: scorpiusOffset.y + -2.2,
+        size: 0.090 
+      },//
+      { name: "Dschubba",
+        x: scorpiusOffset.x + 2.2,
+        y: scorpiusOffset.y + -2.3,
+        size: 0.070 },
+      { name: "Pi Sco",
+        x: scorpiusOffset.x + 3.0,
+        y: scorpiusOffset.y + -2.5,
+        size: 0.060 
+      },
+      { name: "Tau Sco",     x: scorpiusOffset.x + 1.5, y: scorpiusOffset.y + -4.5, size: 0.050 },
+      { name: "Epsilon Sco", x: scorpiusOffset.x + 1.8, y: scorpiusOffset.y + -5.9, size: 0.040 },
+      { name: "Mu1 Sco",
+        x: scorpiusOffset.x + 1.9,
+        y: scorpiusOffset.y + -7.1,
+        size: 0.030 
+      },
+      { name: "Mu2 Sco",     x: scorpiusOffset.x + 1.98, y: scorpiusOffset.y + -7.1, size: 0.025 },
+      { name: "Zeta1 Sco",
+        x: scorpiusOffset.x + 2.6,
+        y: scorpiusOffset.y + -9.5,
+        size: 0.080
+      },
+      { name: "Zeta2 Sco",
+        x: scorpiusOffset.x + 2.7,
+        y: scorpiusOffset.y + -9.4,
+        size: 0.070 
+      },
+      //Random stars
+      { name: "sc1",  x: scorpiusOffset.x + 2.5, y: scorpiusOffset.y + 9.7,  size: 0.025 },
+      { name: "sc2",  x: scorpiusOffset.x + 2.7, y: scorpiusOffset.y + 9.3,  size: 0.025 },
+      { name: "sc3",  x: scorpiusOffset.x + 2.4, y: scorpiusOffset.y + 9.5,  size: 0.025 },
+      { name: "sc4",  x: scorpiusOffset.x + 2.8, y: scorpiusOffset.y + 9.8,  size: 0.025 },
+      { name: "sc5",  x: scorpiusOffset.x + 2.6, y: scorpiusOffset.y + 9.2,  size: 0.025 },
+      { name: "sc6",  x: scorpiusOffset.x + 2.9, y: scorpiusOffset.y + 9.6,  size: 0.025 },
+      { name: "sc7",  x: scorpiusOffset.x + 2.5, y: scorpiusOffset.y + 9.4,  size: 0.025 },
+      { name: "sc8",  x: scorpiusOffset.x + 2.7, y: scorpiusOffset.y + 9.9,  size: 0.025 },
+      { name: "sc9",  x: scorpiusOffset.x + 2.6, y: scorpiusOffset.y + 9.1,  size: 0.025 },
+      { name: "sc10", x: scorpiusOffset.x + 2.8, y: scorpiusOffset.y + 9.3,  size: 0.025 },
+      { name: "sc11", x: scorpiusOffset.x + 2.4, y: scorpiusOffset.y + 9.7,  size: 0.025 },
+      { name: "sc12", x: scorpiusOffset.x + 2.9, y: scorpiusOffset.y + 9.4,  size: 0.025 },
+,
+      //end of it
+      { name: "Eta Sco",     x: scorpiusOffset.x + 3.3, y: scorpiusOffset.y + -6.8, size: 0.050 },
+      { name: "Theta Sco",   x: scorpiusOffset.x + 3.7, y: scorpiusOffset.y + -6.4, size: 0.040 },
+      { name: "Iota Sco",    x: scorpiusOffset.x + 3.8, y: scorpiusOffset.y + -5.9, size: 0.030 },
+    ],
+    delay: 0.8,
+    lines: [],
+  },
 ]
 
-const BG_STARS = 200
+const BG_STARS = 300;
 
 export default function StarField() {
-  const mountRef = useRef<HTMLDivElement>(null)
-  const scrollRef = useRef(0)
-  const animRef = useRef<number>(0)
+  const mountRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef(0);
+  const animRef = useRef<number>(0);
 
   useEffect(() => {
-    if (!mountRef.current) return
+    if (!mountRef.current) return;
 
-    const W = window.innerWidth
-    const H = window.innerHeight
+    const W = window.innerWidth;
+    const H = window.innerHeight;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    renderer.setSize(W, H)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    renderer.setClearColor(0x000000, 0)
-    mountRef.current.appendChild(renderer.domElement)
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(W, H);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    mountRef.current.appendChild(renderer.domElement);
 
-    const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(80, W / H, 0.1, 100)
-    camera.position.z = 8
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(85, W / H, 0.1, 100);
+    camera.position.z = 8;
 
-    const bgGeo = new THREE.BufferGeometry()
-    const bgPos = new Float32Array(BG_STARS * 3)
+    const bgGeo = new THREE.BufferGeometry();
+    const bgPos = new Float32Array(BG_STARS * 3);
     for (let i = 0; i < BG_STARS; i++) {
-      bgPos[i * 3] = (Math.random() - 0.5) * 20
-      bgPos[i * 3 + 1] = (Math.random() - 0.5) * 40
-      bgPos[i * 3 + 2] = (Math.random() - 0.5) * 4 - 2
+      bgPos[i * 3]     = (Math.random() - 0.5) * 20;
+      bgPos[i * 3 + 1] = (Math.random() - 0.5) * 40;
+      bgPos[i * 3 + 2] = (Math.random() - 0.5) * 4 - 2;
     }
-    bgGeo.setAttribute("position", new THREE.BufferAttribute(bgPos, 3))
-    const bgMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.015, transparent: true, opacity: 0.15 })
-    scene.add(new THREE.Points(bgGeo, bgMat))
+    bgGeo.setAttribute("position", new THREE.BufferAttribute(bgPos, 3));
+    const bgMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.015, transparent: true, opacity: 0.15 });
+    scene.add(new THREE.Points(bgGeo, bgMat));
 
-    type StarMesh = THREE.Mesh<THREE.SphereGeometry, THREE.MeshBasicMaterial>
-    type LineMesh = THREE.Line<THREE.BufferGeometry, THREE.LineBasicMaterial>
+    type StarMesh = THREE.Mesh<THREE.SphereGeometry, THREE.MeshBasicMaterial>;
+    type LineMesh = THREE.Line<THREE.BufferGeometry, THREE.LineBasicMaterial>;
 
-    const cObjects: { stars: StarMesh[]; lines: LineMesh[] }[] = []
-    const allStars: { mesh: StarMesh; constIdx: number; starIdx: number }[] = []
-    const allLines: { line: LineMesh; constIdx: number; lineIdx: number }[] = []
+    const cObjects: { stars: StarMesh[]; lines: LineMesh[] }[] = [];
+    const allStars: { mesh: StarMesh; constIdx: number; starIdx: number }[] = [];
+    const allLines: { line: LineMesh; constIdx: number; lineIdx: number }[] = [];
 
     constellations.forEach((c, ci) => {
-      const stars: StarMesh[] = []
-      const lines: LineMesh[] = []
+      const stars: StarMesh[] = [];
+      const lines: LineMesh[] = [];
 
       c.stars.forEach((s) => {
-        const geo = new THREE.SphereGeometry(s.size, 8, 8)
-        const mat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0 })
-        const mesh = new THREE.Mesh(geo, mat)
-        mesh.position.set(s.x, s.y, 0)
-        scene.add(mesh)
-        stars.push(mesh)
-        allStars.push({ mesh, constIdx: ci, starIdx: stars.length - 1 })
-      })
+        const geo = new THREE.SphereGeometry(s.size, 8, 8);
+        const mat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0 });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.position.set(s.x, s.y, 0);
+        scene.add(mesh);
+        stars.push(mesh);
+        allStars.push({ mesh, constIdx: ci, starIdx: stars.length - 1 });
+      });
 
       c.lines.forEach((l, li) => {
-        const from = c.stars[l[0]]
-        const to = c.stars[l[1]]
+        const from = c.stars[l[0]];
+        const to = c.stars[l[1]];
         const geo = new THREE.BufferGeometry().setFromPoints([
           new THREE.Vector3(from.x, from.y, 0),
           new THREE.Vector3(to.x, to.y, 0),
-        ])
-        const mat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0 })
-        const line = new THREE.Line(geo, mat)
-        scene.add(line)
-        lines.push(line)
-        allLines.push({ line, constIdx: ci, lineIdx: li })
-      })
+        ]);
+        const mat = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0 });
+        const line = new THREE.Line(geo, mat);
+        scene.add(line);
+        lines.push(line);
+        allLines.push({ line, constIdx: ci, lineIdx: li });
+      });
 
-      cObjects.push({ stars, lines })
-    })
+      cObjects.push({ stars, lines });
+    });
 
-    const totalStars = allStars.length
-    const totalLines = allLines.length
-    const totalElements = totalStars + totalLines
+    const totalStars = allStars.length;
+    const totalLines = allLines.length;
+    const totalElements = totalStars + totalLines;
 
     const onScroll = () => {
-      const maxScroll = document.body.scrollHeight - window.innerHeight
-      scrollRef.current = maxScroll > 0 ? window.scrollY / maxScroll : 0
-    }
-    window.addEventListener("scroll", onScroll, { passive: true })
+      const maxScroll = document.body.scrollHeight - window.innerHeight;
+      scrollRef.current = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     const animate = () => {
-      animRef.current = requestAnimationFrame(animate)
+      animRef.current = requestAnimationFrame(animate);
 
-      const progress = scrollRef.current
-      bgMat.opacity = 0.15 + progress * 0.5
+      const progress = scrollRef.current;
+
+      bgMat.opacity = 0.15 + progress * 0.5;
 
       allStars.forEach((s, i) => {
-        const targetOpacity = 1
-        s.mesh.material.opacity += (targetOpacity - s.mesh.material.opacity) * 0.05
-
+        const delay = constellations[s.constIdx].delay ?? 0;
+        const adjustedProgress = Math.max(0, progress - delay) / (1 - delay);
+        const visibleStars = adjustedProgress * totalElements;
+        const targetOpacity = i < visibleStars ? 1 : 0;
+        s.mesh.material.opacity += (targetOpacity - s.mesh.material.opacity) * 0.05;
         if (s.mesh.material.opacity > 0.5) {
           s.mesh.material.opacity = Math.max(0, Math.min(1,
             s.mesh.material.opacity + Math.sin(Date.now() * 0.002 + i) * 0.01
-          ))
+          ));
         }
-      })
+      });
 
       allLines.forEach((l) => {
-        const targetOpacity = 0.25
-        l.line.material.opacity += (targetOpacity - l.line.material.opacity) * 0.05
-      })
+        const delay = constellations[l.constIdx].delay ?? 0;
+        const adjustedProgress = Math.max(0, progress - delay) / (1 - delay);
+        const visibleStars = adjustedProgress * totalElements;
+        const c = constellations[l.constIdx];
+        const lineData = c.lines[l.lineIdx];
+        let starOffset = 0;
+        for (let ci = 0; ci < l.constIdx; ci++) {
+          starOffset += constellations[ci].stars.length;
+        }
+        const secondStarGlobalIdx = starOffset + lineData[1];
+        const targetOpacity = secondStarGlobalIdx < visibleStars ? 0.25 : 0;
+        l.line.material.opacity += (targetOpacity - l.line.material.opacity) * 0.05;
+      });
 
-      camera.position.y = -scrollRef.current * 8
-      camera.position.x = Math.sin(scrollRef.current * Math.PI) * 0.15
+      camera.position.y = -scrollRef.current * 8;
+      camera.position.x = Math.sin(scrollRef.current * Math.PI) * 0.15;
 
-      renderer.render(scene, camera)
-    }
+      renderer.render(scene, camera);
+    };
 
-
-    animate()
+    animate();
 
     const onResize = () => {
-      const W = window.innerWidth
-      const H = window.innerHeight
-      camera.aspect = W / H
-      camera.updateProjectionMatrix()
-      renderer.setSize(W, H)
-    }
-    window.addEventListener("resize", onResize)
+      const W = window.innerWidth;
+      const H = window.innerHeight;
+      camera.aspect = W / H;
+      camera.updateProjectionMatrix();
+      renderer.setSize(W, H);
+    };
+    window.addEventListener("resize", onResize);
 
     return () => {
-      cancelAnimationFrame(animRef.current)
-      window.removeEventListener("scroll", onScroll)
-      window.removeEventListener("resize", onResize)
-      renderer.dispose()
+      cancelAnimationFrame(animRef.current);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
+      renderer.dispose();
       if (mountRef.current?.contains(renderer.domElement)) {
-        mountRef.current.removeChild(renderer.domElement)
+        mountRef.current.removeChild(renderer.domElement);
       }
-    }
-  }, [])
+    };
+  }, []);
 
   return (
     <div
@@ -542,5 +321,5 @@ export default function StarField() {
         pointerEvents: "none",
       }}
     />
-  )
+  );
 }
