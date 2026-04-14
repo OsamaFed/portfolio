@@ -6,8 +6,8 @@ const orionOffset      = { x: 0, y: 0 }
 const taurusOffset     = { x: 0, y: 0 }
 const pleiadesOffset   = { x: 0, y: 0 }
 const ursaOffset       = { x: 0, y: -3 }
-const cassiopeiaOffset = { x: 1, y: -3 }
-const scorpiusOffset   = { x: 0, y: -4 }
+const cassiopeiaOffset = { x: 1, y: -2 }
+const scorpiusOffset   = { x: -2, y: -3 }
 
 const constellations = [
   {
@@ -16,9 +16,9 @@ const constellations = [
       { name: "Betelgeuse",  x: orionOffset.x + -3.5, y: orionOffset.y + 2.0,  size: 0.03  },
       { name: "Bellatrix",   x: orionOffset.x + -1.5, y: orionOffset.y + 2.3,  size: 0.018 },
       { name: "Mu Ori",      x: orionOffset.x + -2.3, y: orionOffset.y + 3.2,  size: 0.013 },
-      { name: "Mintaka",     x: orionOffset.x + -3.0, y: orionOffset.y + 0.5,  size: 0.04  },
-      { name: "Alnilam",     x: orionOffset.x + -2.5, y: orionOffset.y + 0.7,  size: 0.04  },
-      { name: "Alnitak",     x: orionOffset.x + -2.0, y: orionOffset.y + 0.9,  size: 0.04  },
+      { name: "Mintaka",     x: orionOffset.x + -3.0, y: orionOffset.y + 0.5,  size: 0.023 },
+      { name: "Alnilam",     x: orionOffset.x + -2.5, y: orionOffset.y + 0.7,  size: 0.023  },
+      { name: "Alnitak",     x: orionOffset.x + -2.0, y: orionOffset.y + 0.9,  size: 0.023  },
       { name: "Saiph",       x: orionOffset.x + -3.3, y: orionOffset.y + -0.8, size: 0.015 },
       { name: "Rigel",       x: orionOffset.x + -1.4, y: orionOffset.y + -1.0, size: 0.025 },
       { name: "Pi1 Ori",     x: orionOffset.x +  0.2, y: orionOffset.y + 2.8,  size: 0.011 },
@@ -34,13 +34,13 @@ const constellations = [
   {
     name: "Taurus",
     stars: [
-      { name: "Aldebaran",   x: taurusOffset.x + 1.8,  y: taurusOffset.y + 1.2,  size: 0.02  },
-      { name: "Theta Tau",   x: taurusOffset.x + 1.8,  y: taurusOffset.y + 1.7,  size: 0.02  },
-      { name: "Alpha Tau",   x: taurusOffset.x + 1.75, y: taurusOffset.y + 1.7,  size: 0.02  },
-      { name: "Gamma Tau",   x: taurusOffset.x + 2.7,  y: taurusOffset.y + 2.1,  size: 0.02  },
-      { name: "Delta Tau",   x: taurusOffset.x + 2.0,  y: taurusOffset.y + 2.2,  size: 0.045 },
-      { name: "Epsilon Tau", x: taurusOffset.x + 2.4,  y: taurusOffset.y + 1.7,  size: 0.02  },
-      { name: "O Tau",       x: taurusOffset.x + 2.3,  y: taurusOffset.y + 1.6,  size: 0.02  },
+      { name: "Aldebaran",   x: taurusOffset.x + 1.8,  y: taurusOffset.y + 1.2,  size: 0.025  },
+      { name: "Theta Tau",   x: taurusOffset.x + 1.8,  y: taurusOffset.y + 1.7,  size: 0.020  },
+      { name: "Alpha Tau",   x: taurusOffset.x + 1.75, y: taurusOffset.y + 1.7,  size: 0.020  },
+      { name: "Gamma Tau",   x: taurusOffset.x + 2.7,  y: taurusOffset.y + 2.1,  size: 0.020},
+      { name: "Delta Tau",   x: taurusOffset.x + 2.0,  y: taurusOffset.y + 2.2,  size: 0.030 },
+      { name: "Epsilon Tau", x: taurusOffset.x + 2.4,  y: taurusOffset.y + 1.7,  size: 0.020  },
+      { name: "O Tau",       x: taurusOffset.x + 2.3,  y: taurusOffset.y + 1.6,  size: 0.015  },
       { name: "Zeta Tau",    x: taurusOffset.x + 2.4,  y: taurusOffset.y + 3.0,  size: 0.018 },
       { name: "Beta Tau",    x: taurusOffset.x + 3.2,  y: taurusOffset.y + 2.9,  size: 0.025 },
       { name: "T tau",       x: taurusOffset.x + 3.1,  y: taurusOffset.y + 2.4,  size: 0.018 },
@@ -54,14 +54,14 @@ const constellations = [
   {
     name: "Pleiades",
     stars: [
-      { name: "Atlas",   x: pleiadesOffset.x + 3.3,  y: pleiadesOffset.y + -0.2, size: 0.035 },
-      { name: "Pleione", x: pleiadesOffset.x + 3.4,  y: pleiadesOffset.y + -0.2, size: 0.025 },
-      { name: "Alcyone", x: pleiadesOffset.x + 3.4,  y: pleiadesOffset.y + -0.5, size: 0.035 },
-      { name: "Merope",  x: pleiadesOffset.x + 3.29, y: pleiadesOffset.y + -0.8, size: 0.035 },
-      { name: "Electra", x: pleiadesOffset.x + 3.6,  y: pleiadesOffset.y + -1.0, size: 0.036 },
-      { name: "celaeno", x: pleiadesOffset.x + 3.7,  y: pleiadesOffset.y + -1.0, size: 0.035 },
-      { name: "Taygeta", x: pleiadesOffset.x + 3.82, y: pleiadesOffset.y + -0.8, size: 0.035 },
-      { name: "Maia",    x: pleiadesOffset.x + 3.7,  y: pleiadesOffset.y + -0.7, size: 0.035 },
+      { name: "Atlas",   x: pleiadesOffset.x + 3.3,  y: pleiadesOffset.y + -0.2, size: 0.022 },
+      { name: "Pleione", x: pleiadesOffset.x + 3.4,  y: pleiadesOffset.y + -0.2, size: 0.022 },
+      { name: "Alcyone", x: pleiadesOffset.x + 3.4,  y: pleiadesOffset.y + -0.5, size: 0.022 },
+      { name: "Merope",  x: pleiadesOffset.x + 3.29, y: pleiadesOffset.y + -0.8, size: 0.022 },
+      { name: "Electra", x: pleiadesOffset.x + 3.6,  y: pleiadesOffset.y + -1.0, size: 0.022 },
+      { name: "celaeno", x: pleiadesOffset.x + 3.7,  y: pleiadesOffset.y + -1.0, size: 0.022 },
+      { name: "Taygeta", x: pleiadesOffset.x + 3.82, y: pleiadesOffset.y + -0.8, size: 0.022 },
+      { name: "Maia",    x: pleiadesOffset.x + 3.7,  y: pleiadesOffset.y + -0.7, size: 0.022 },
       { name: "s1",  x: pleiadesOffset.x + 3.2, y: pleiadesOffset.y + -0.6, size: 0.015 },
       { name: "s2",  x: pleiadesOffset.x + 3.4, y: pleiadesOffset.y + -0.4, size: 0.015 },
       { name: "s3",  x: pleiadesOffset.x + 3.1, y: pleiadesOffset.y + -0.3, size: 0.015 },
@@ -106,60 +106,71 @@ const constellations = [
   {
     name: "Scorpius",
     stars: [
-      { name: "Antares",     x: scorpiusOffset.x + 1.5, y: scorpiusOffset.y + -3.5, size: 0.120 },//قلب العقرب 
+      { name: "Antares",     x: scorpiusOffset.x + 1.5, y: scorpiusOffset.y + -3.5, size: 0.030},//قلب العقرب 
       { name: "acrab",
-        x: scorpiusOffset.x + 1.6,
-        y: scorpiusOffset.y + -2.2,
-        size: 0.090 
+        x: scorpiusOffset.x + 1.5,
+        y: scorpiusOffset.y + -2.0,
+        size: 0.025 
       },//
       { name: "Dschubba",
-        x: scorpiusOffset.x + 2.2,
-        y: scorpiusOffset.y + -2.3,
-        size: 0.070 },
+        x: scorpiusOffset.x + 2.1,
+        y: scorpiusOffset.y + -2.2,
+        size: 0.025 },
       { name: "Pi Sco",
-        x: scorpiusOffset.x + 3.0,
-        y: scorpiusOffset.y + -2.5,
-        size: 0.060 
+        x: scorpiusOffset.x + 2.6,
+        y: scorpiusOffset.y + -2.6,
+        size: 0.025 
       },
-      { name: "Tau Sco",     x: scorpiusOffset.x + 1.5, y: scorpiusOffset.y + -4.5, size: 0.050 },
-      { name: "Epsilon Sco", x: scorpiusOffset.x + 1.8, y: scorpiusOffset.y + -5.9, size: 0.040 },
+      { name: "Tau Sco",     x: scorpiusOffset.x + 1.5, y: scorpiusOffset.y + -4.5, size: 0.020 },
+      { name: "Epsilon Sco", x: scorpiusOffset.x + 1.9, y: scorpiusOffset.y + -5.9, size: 0.025 },
       { name: "Mu1 Sco",
-        x: scorpiusOffset.x + 1.9,
+        x: scorpiusOffset.x + 2.4,
         y: scorpiusOffset.y + -7.1,
-        size: 0.030 
+        size: 0.018 
       },
-      { name: "Mu2 Sco",     x: scorpiusOffset.x + 1.98, y: scorpiusOffset.y + -7.1, size: 0.025 },
+      { name: "Mu2 Sco",     x: scorpiusOffset.x + 2.49, y: scorpiusOffset.y + -7.1, size: 0.018 },
       { name: "Zeta1 Sco",
         x: scorpiusOffset.x + 2.6,
         y: scorpiusOffset.y + -9.5,
-        size: 0.080
+        size: 0.020
       },
       { name: "Zeta2 Sco",
         x: scorpiusOffset.x + 2.7,
         y: scorpiusOffset.y + -9.4,
-        size: 0.070 
+        size: 0.020
       },
       //Random stars
-      { name: "sc1",  x: scorpiusOffset.x + 2.5, y: scorpiusOffset.y + 9.7,  size: 0.025 },
-      { name: "sc2",  x: scorpiusOffset.x + 2.7, y: scorpiusOffset.y + 9.3,  size: 0.025 },
-      { name: "sc3",  x: scorpiusOffset.x + 2.4, y: scorpiusOffset.y + 9.5,  size: 0.025 },
-      { name: "sc4",  x: scorpiusOffset.x + 2.8, y: scorpiusOffset.y + 9.8,  size: 0.025 },
-      { name: "sc5",  x: scorpiusOffset.x + 2.6, y: scorpiusOffset.y + 9.2,  size: 0.025 },
-      { name: "sc6",  x: scorpiusOffset.x + 2.9, y: scorpiusOffset.y + 9.6,  size: 0.025 },
-      { name: "sc7",  x: scorpiusOffset.x + 2.5, y: scorpiusOffset.y + 9.4,  size: 0.025 },
-      { name: "sc8",  x: scorpiusOffset.x + 2.7, y: scorpiusOffset.y + 9.9,  size: 0.025 },
-      { name: "sc9",  x: scorpiusOffset.x + 2.6, y: scorpiusOffset.y + 9.1,  size: 0.025 },
-      { name: "sc10", x: scorpiusOffset.x + 2.8, y: scorpiusOffset.y + 9.3,  size: 0.025 },
-      { name: "sc11", x: scorpiusOffset.x + 2.4, y: scorpiusOffset.y + 9.7,  size: 0.025 },
-      { name: "sc12", x: scorpiusOffset.x + 2.9, y: scorpiusOffset.y + 9.4,  size: 0.025 },
-,
+      { name: "sc1",  x: scorpiusOffset.x + 2.7, y: scorpiusOffset.y + -9.5, size: 0.008 },
+      { name: "sc2",  x: scorpiusOffset.x + 2.7, y: scorpiusOffset.y + -9.3, size: 0.008 },
+      { name: "sc3",  x: scorpiusOffset.x + 2.4, y: scorpiusOffset.y + -9.5, size: 0.008 },
+      { name: "sc4",  x: scorpiusOffset.x + 2.8, y: scorpiusOffset.y + -9.8, size: 0.008 },
+      { name: "sc5",  x: scorpiusOffset.x + 2.6, y: scorpiusOffset.y + -9.2, size: 0.008 },
+      { name: "sc6",  x: scorpiusOffset.x + 2.9, y: scorpiusOffset.y + -9.6, size: 0.008 },
+      { name: "sc7",  x: scorpiusOffset.x + 2.5, y: scorpiusOffset.y + -9.4, size: 0.008 },
+      { name: "sc8",  x: scorpiusOffset.x + 2.7, y: scorpiusOffset.y + -9.9, size: 0.008 },
+      { name: "sc9",  x: scorpiusOffset.x + 2.6, y: scorpiusOffset.y + -9.1, size: 0.008 },
+      { name: "sc10", x: scorpiusOffset.x + 2.8, y: scorpiusOffset.y + -9.3, size: 0.008 },
+      { name: "sc11", x: scorpiusOffset.x + 2.4, y: scorpiusOffset.y + -9.7, size: 0.008 },
+      { name: "sc12", x: scorpiusOffset.x + 2.9, y: scorpiusOffset.y + -9.4, size: 0.008 },
       //end of it
-      { name: "Eta Sco",     x: scorpiusOffset.x + 3.3, y: scorpiusOffset.y + -6.8, size: 0.050 },
-      { name: "Theta Sco",   x: scorpiusOffset.x + 3.7, y: scorpiusOffset.y + -6.4, size: 0.040 },
-      { name: "Iota Sco",    x: scorpiusOffset.x + 3.8, y: scorpiusOffset.y + -5.9, size: 0.030 },
+      { name: "Eta Sco",
+        x: scorpiusOffset.x + 1.8,
+        y: scorpiusOffset.y + -10.4,
+        size: 0.020 },
+      { name: "Theta Sco",   x: scorpiusOffset.x + 1.2, y: scorpiusOffset.y + -11.0, size: 0.027 },
+      { name: "Iota Sco",    x: scorpiusOffset.x + 0.1, y: scorpiusOffset.y + -10.9, size: 0.020 },
+      { name: "Kappa Sco",   x: scorpiusOffset.x + 0.1, y: scorpiusOffset.y + -10.1, size: 0.025 },
+      { name: "Shaula",
+        x: scorpiusOffset.x + 0.1,
+        y: scorpiusOffset.y + -9.4,
+        size: 0.027 },
+      { name: "Lesath",
+        x: scorpiusOffset.x + 0.28,
+        y: scorpiusOffset.y + -9.4,
+        size: 0.027 },
+      
     ],
-    delay: 0.8,
-    lines: [],
+    lines: [[1,0],[2,0],[3,0],[0,4],[4,5],[5,7],[7,9],[9,22],[22,23],[23,24],[24,25],[25,26]]
   },
 ]
 
