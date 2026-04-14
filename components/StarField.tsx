@@ -7,7 +7,7 @@ const taurusOffset     = { x: 0, y: 0 }
 const pleiadesOffset   = { x: 0, y: 0 }
 const ursaOffset       = { x: 0, y: -3 }
 const cassiopeiaOffset = { x: 1, y: -2 }
-const scorpiusOffset   = { x: -2, y: -3 }
+const scorpiusOffset   = { x: 1, y: -3 }
 
 const constellations = [
   {
@@ -104,9 +104,27 @@ const constellations = [
     lines: [[0,1],[1,2],[2,3],[3,4]],
   },
   {
+    name:"cancer",
+    stars:[
+      {
+        name:"beta Cancri",
+        x:cancerOffset.x + 1.5,
+        y:cancerOffset.y + 1.5,
+        size:0.025
+      },
+      {
+        name:"Acubens"
+      }
+    ]
+  },
+  {
     name: "Scorpius",
     stars: [
-      { name: "Antares",     x: scorpiusOffset.x + 1.5, y: scorpiusOffset.y + -3.5, size: 0.030},//قلب العقرب 
+      { name: "Antares",
+        x: scorpiusOffset.x + 1.5,
+        y: scorpiusOffset.y + -3.5,
+        size: 0.030
+      },//قلب العقرب 
       { name: "acrab",
         x: scorpiusOffset.x + 1.5,
         y: scorpiusOffset.y + -2.0,
