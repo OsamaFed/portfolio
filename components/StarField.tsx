@@ -88,7 +88,7 @@ const constellations = [
       { name: "Zeta UMi",    x: ursaOffset.x + 2.2, y: ursaOffset.y + -2.0, size: 0.015 },
       { name: "Kochab",      x: ursaOffset.x + 2.1, y: ursaOffset.y + -0.9, size: 0.015 },
     ],
-    delay: 0.4,
+    delay: 0.1,
     lines: [[0,1],[1,2],[2,3],[4,3],[4,5],[5,2]],
   },
   {
@@ -108,38 +108,52 @@ const constellations = [
     stars:[
       {
         name:"beta Cancri",
-        x:cancerOffset.x + 1.5,
-        y:cancerOffset.y + 1.5,
+        x:cancerOffset.x + 0.6,
+        y:cancerOffset.y + 0.3,
         size:0.025
       },
       {
         name:"Acubens",
-        x:cancerOffset.x + 1.5,
-        y:cancerOffset.y + 2.0,
+        x:cancerOffset.x + 0.7,
+        y:cancerOffset.y + 1.8,
         size:0.025,
       },
       {
         name:"Asellus Australis",
-        x:cancerOffset.x + 2.2,
-        y:cancerOffset.y + 1.5,
+        x:cancerOffset.x + 2.1,
+        y:cancerOffset.y + 1.2,
         size:0.025  
       },
+      //Random stars
+      { name: "sc1",  x: scorpiusOffset.x + 2.7, y: scorpiusOffset.y + -9.5, size: 0.008 },
+      { name: "sc2",  x: scorpiusOffset.x + 2.7, y: scorpiusOffset.y + -9.3, size: 0.008 },
+      { name: "sc3",  x: scorpiusOffset.x + 2.4, y: scorpiusOffset.y + -9.5, size: 0.008 },
+      { name: "sc4",  x: scorpiusOffset.x + 2.8, y: scorpiusOffset.y + -9.8, size: 0.008 },
+      { name: "sc5",  x: scorpiusOffset.x + 2.6, y: scorpiusOffset.y + -9.2, size: 0.008 },
+      { name: "sc6",  x: scorpiusOffset.x + 2.9, y: scorpiusOffset.y + -9.6, size: 0.008 },
+      { name: "sc7",  x: scorpiusOffset.x + 2.5, y: scorpiusOffset.y + -9.4, size: 0.008 },
+      { name: "sc8",  x: scorpiusOffset.x + 2.7, y: scorpiusOffset.y + -9.9, size: 0.008 },
+      { name: "sc9",  x: scorpiusOffset.x + 2.6, y: scorpiusOffset.y + -9.1, size: 0.008 },
+      { name: "sc10", x: scorpiusOffset.x + 2.8, y: scorpiusOffset.y + -9.3, size: 0.008 },
+      { name: "sc11", x: scorpiusOffset.x + 2.4, y: scorpiusOffset.y + -9.7, size: 0.008 },
+      { name: "sc12", x: scorpiusOffset.x + 2.9, y: scorpiusOffset.y + -9.4, size: 0.008 },
+      //end of it
       {
         name:"Asellus Borealis",
-        x:cancerOffset.x + 2.5,
-        y:cancerOffset.y + 1.5,
+        x:cancerOffset.x + 2.7,
+        y:cancerOffset.y + 1.2,
         size:0.025
       },
       {
         name:"Iota Cancri",
-        x:cancerOffset.x + 3.5,
-        y:cancerOffset.y + 1.6,
+        x:cancerOffset.x + 4.0,
+        y:cancerOffset.y + 1.99,
         size:0.025
       },
       {
         name:"chi Cancri",
-        x:cancerOffset.x + 3.5,
-        y:cancerOffset.y + 0.6,
+        x:cancerOffset.x + 4.0,
+        y:cancerOffset.y + 0.5,
         size:0.025
       }
     ],
