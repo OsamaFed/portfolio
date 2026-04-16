@@ -7,7 +7,7 @@ const taurusOffset     = { x: 0, y: 0 }
 const pleiadesOffset   = { x: 0, y: 0 }
 const ursaOffset       = { x: 0, y: -3 }
 const cassiopeiaOffset = { x: 1, y: -2 }
-const scorpiusOffset   = { x: -0.2, y: -3 }
+const scorpiusOffset   = { x: -0.5, y: -3 }
 const cancerOffset = { x: -4, y: -7 }
 const beehiveOffset = { x: -1.79, y: -6.1 }
 const constellations = [
@@ -126,26 +126,28 @@ const constellations = [
         size:0.025  
       },
       //cluster
-      { name: "sc1",  x: beehiveOffset.x + 0.05, y: beehiveOffset.y + 0.02, size: 0.0018 },
-      { name: "sc2",  x: beehiveOffset.x + 0.22, y: beehiveOffset.y - 0.05, size: 0.0150 },
-      { name: "sc3",  x: beehiveOffset.x + 0.08, y: beehiveOffset.y + 0.08, size: 0.0025 },
-      { name: "sc4",  x: beehiveOffset.x + 0.31, y: beehiveOffset.y - 0.08, size: 0.0200 },
-      { name: "sc5",  x: beehiveOffset.x + 0.14, y: beehiveOffset.y + 0.05, size: 0.0120 },
-      { name: "sc6",  x: beehiveOffset.x - 0.01, y: beehiveOffset.y - 0.02, size: 0.0015 },
-      { name: "sc7",  x: beehiveOffset.x + 0.27, y: beehiveOffset.y + 0.10, size: 0.0180 },
-      { name: "sc8",  x: beehiveOffset.x + 0.02, y: beehiveOffset.y - 0.09, size: 0.0090 },
-      { name: "sc9",  x: beehiveOffset.x + 0.19, y: beehiveOffset.y + 0.03, size: 0.0040 },
-      { name: "sc10", x: beehiveOffset.x + 0.35, y: beehiveOffset.y - 0.04, size: 0.0200 },
-      { name: "sc11", x: beehiveOffset.x - 0.09, y: beehiveOffset.y + 0.07, size: 0.0140 },
-      { name: "sc12", x: beehiveOffset.x + 0.10, y: beehiveOffset.y - 0.06, size: 0.0015 },
-      { name: "sc13", x: beehiveOffset.x - 0.07, y: beehiveOffset.y + 0.09, size: 0.0170 },
-      { name: "sc14", x: beehiveOffset.x + 0.25, y: beehiveOffset.y - 0.07, size: 0.0080 },
-      { name: "sc15", x: beehiveOffset.x + 0.05, y: beehiveOffset.y + 0.01, size: 0.0030 },
-      { name: "sc16", x: beehiveOffset.x + 0.32, y: beehiveOffset.y + 0.06, size: 0.0190 },
-      { name: "sc17", x: beehiveOffset.x + 0.17, y: beehiveOffset.y - 0.03, size: 0.0020 },
-      { name: "sc18", x: beehiveOffset.x - 0.02, y: beehiveOffset.y - 0.01, size: 0.0200 },
-      { name: "sc19", x: beehiveOffset.x + 0.21, y: beehiveOffset.y + 0.04, size: 0.0110 },
-      { name: "sc20", x: beehiveOffset.x + 0.09, y: beehiveOffset.y - 0.09, size: 0.0160 },
+      // Beehive Cluster (Sizes: 0.008 - 0.013)
+      { name: "sc1",  x: beehiveOffset.x + 0.05, y: beehiveOffset.y + 0.02, size: 0.0085 },
+      { name: "sc2",  x: beehiveOffset.x + 0.22, y: beehiveOffset.y - 0.05, size: 0.0110 },
+      { name: "sc3",  x: beehiveOffset.x + 0.08, y: beehiveOffset.y + 0.08, size: 0.0092 },
+      { name: "sc4",  x: beehiveOffset.x + 0.31, y: beehiveOffset.y - 0.08, size: 0.0130 },
+      { name: "sc5",  x: beehiveOffset.x + 0.14, y: beehiveOffset.y + 0.05, size: 0.0105 },
+      { name: "sc6",  x: beehiveOffset.x - 0.01, y: beehiveOffset.y - 0.02, size: 0.0080 },
+      { name: "sc7",  x: beehiveOffset.x + 0.27, y: beehiveOffset.y + 0.10, size: 0.0125 },
+      { name: "sc8",  x: beehiveOffset.x + 0.02, y: beehiveOffset.y - 0.09, size: 0.0115 },
+      { name: "sc9",  x: beehiveOffset.x + 0.19, y: beehiveOffset.y + 0.03, size: 0.0098 },
+      { name: "sc10", x: beehiveOffset.x + 0.35, y: beehiveOffset.y - 0.04, size: 0.0130 },
+      { name: "sc11", x: beehiveOffset.x - 0.09, y: beehiveOffset.y + 0.07, size: 0.0120 },
+      { name: "sc12", x: beehiveOffset.x + 0.10, y: beehiveOffset.y - 0.06, size: 0.0082 },
+      { name: "sc13", x: beehiveOffset.x - 0.07, y: beehiveOffset.y + 0.09, size: 0.0128 },
+      { name: "sc14", x: beehiveOffset.x + 0.25, y: beehiveOffset.y - 0.07, size: 0.0100 },
+      { name: "sc15", x: beehiveOffset.x + 0.05, y: beehiveOffset.y + 0.01, size: 0.0095 },
+      { name: "sc16", x: beehiveOffset.x + 0.32, y: beehiveOffset.y + 0.06, size: 0.0130 },
+      { name: "sc17", x: beehiveOffset.x + 0.17, y: beehiveOffset.y - 0.03, size: 0.0088 },
+      { name: "sc18", x: beehiveOffset.x - 0.02, y: beehiveOffset.y - 0.01, size: 0.0130 },
+      { name: "sc19", x: beehiveOffset.x + 0.21, y: beehiveOffset.y + 0.04, size: 0.0102 },
+      { name: "sc20", x: beehiveOffset.x + 0.09, y: beehiveOffset.y - 0.09, size: 0.0118 },
+      //end of cluster
       //end of cluster
       {
         name:"Asellus Borealis",
@@ -160,14 +162,14 @@ const constellations = [
         size:0.025
       },
       {
-        name:"chi Cancri",
+        name:"chi Cancri",//25
         x:cancerOffset.x + 4.0,
         y:cancerOffset.y + 0.5,
         size:0.025
       }
     ],
     delay:0.7,
-    lines:[]
+    lines:[[0,2],[1,2],[2,23],[23,24],[23,25]]
   },
   {
     name: "Scorpius",
