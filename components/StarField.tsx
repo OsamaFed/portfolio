@@ -8,8 +8,7 @@ const pleiadesOffset   = { x: 0, y: 0 }
 const ursaOffset       = { x: 0, y: -3 }
 const cassiopeiaOffset = { x: 1, y: -2 }
 const scorpiusOffset   = { x: -0.2, y: -3 }
-const cancerOffset     = { x: 0, y: 0 }
-
+const cancerOffset = { x: -4, y: -7 }
 const constellations = [
   {
     name: "Orion",
@@ -144,6 +143,7 @@ const constellations = [
         size:0.025
       }
     ],
+    delay:0.7,
     lines:[]
   },
   {
@@ -217,8 +217,9 @@ const constellations = [
         size: 0.027 },
       
     ],
+    delay: 0.8,
     lines: [[1,0],[2,0],[3,0],[0,4],[4,5],[5,7],[7,9],[9,22],[22,23],[23,24],[24,25],[25,26]]
-  },
+  }
 ]
 
 const BG_STARS = 300;
