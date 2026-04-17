@@ -148,7 +148,6 @@ const constellations = [
       { name: "sc19", x: beehiveOffset.x + 0.21, y: beehiveOffset.y + 0.04, size: 0.0102 },
       { name: "sc20", x: beehiveOffset.x + 0.09, y: beehiveOffset.y - 0.09, size: 0.0118 },
       //end of cluster
-      //end of cluster
       {
         name:"Asellus Borealis",
         x:cancerOffset.x + 2.7,
