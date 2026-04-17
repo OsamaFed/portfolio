@@ -10,7 +10,7 @@ const cassiopeiaOffset = { x: 1, y: -2 }
 const scorpiusOffset   = { x: -0.5, y: -3 }
 const cancerOffset = { x: -4, y: -7 }
 const beehiveOffset = { x: -1.79, y: -6.1 }
-const lynxOffset = { x: -4, y: -10 }
+const lynxOffset = { x: -2.5, y: -14 }
 const constellations = [
   {
     name: "Orion",
@@ -174,16 +174,18 @@ const constellations = [
   {
     name: "Lynx",
     stars: [
-      { name: "Alpha Lyncis",   x: lynxOffset.x + 0.0,  y: lynxOffset.y + 0.0,  size: 0.022 },
-      { name: "38 Lyncis",      x: lynxOffset.x + 1.2,  y: lynxOffset.y + 0.8,  size: 0.016 },
-      { name: "10 Ursae Maj",   x: lynxOffset.x + 2.1,  y: lynxOffset.y + 1.5,  size: 0.014 },
-      { name: "31 Lyncis",      x: lynxOffset.x + 1.0,  y: lynxOffset.y + -0.8, size: 0.018 },
-      { name: "21 Lyncis",      x: lynxOffset.x + 2.5,  y: lynxOffset.y + 0.2,  size: 0.014 },
-      { name: "15 Lyncis",      x: lynxOffset.x + 3.2,  y: lynxOffset.y + 1.0,  size: 0.013 },
-      { name: "2 Lyncis",       x: lynxOffset.x + 3.8,  y: lynxOffset.y + -0.3, size: 0.012 },
+      { name: "Alpha Lyncis", x: lynxOffset.x + 0.0,  y: lynxOffset.y + 0.0,  size: 0.022 },
+      { name: "31 Lyncis",    x: lynxOffset.x + 0.3,  y: lynxOffset.y + 1.4,  size: 0.018 },
+      { name: "Psi UMa",      x: lynxOffset.x - 0.2,  y: lynxOffset.y + 2.8,  size: 0.014 },
+      { name: "38 Lyncis",    x: lynxOffset.x + 0.4,  y: lynxOffset.y + 4.1,  size: 0.016 },
+      { name: "21 Lyncis",    x: lynxOffset.x + 0.1,  y: lynxOffset.y + 5.4,  size: 0.014 },
+      { name: "15 Lyncis",    x: lynxOffset.x + 0.7,  y: lynxOffset.y + 6.6,  size: 0.013 },
+      { name: "10 Ursae Maj", x: lynxOffset.x + 0.9,  y: lynxOffset.y + 7.6,  size: 0.014 },
+      { name: "6 Lyncis",     x: lynxOffset.x + 1.4,  y: lynxOffset.y + 8.4,  size: 0.013 },
+      { name: "2 Lyncis",     x: lynxOffset.x + 1.7,  y: lynxOffset.y + 9.4,  size: 0.018 },
     ],
     delay: 0.75,
-    lines: [[0,1],[1,2],[0,3],[3,4],[4,5],[4,6]],
+    lines: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8]],
   },
   {
     name: "Scorpius",
