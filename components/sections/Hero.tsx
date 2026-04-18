@@ -55,9 +55,9 @@ export default function Hero() {
         maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)",
       }}/>
 
-      <div className="relative z-10 max-w-2xl mx-auto w-full px-6 pt-32 pb-20">
+      <div className="relative z-10 max-w-2xl mx-auto w-full px-6 pt-28 pb-12">
 
-        <div style={fade(0.1)} className="relative flex items-start gap-4 mb-8">
+        <div style={fade(0.1)} className="relative flex items-start gap-4 mb-5">
           <Image
             src="/avatar.jpeg"
             alt="Osama Mohammed"
@@ -85,7 +85,7 @@ export default function Hero() {
         {/* Bio */}
         <div
           style={{ ...fade(0.2), fontFamily: "var(--font-mono, monospace)", color: "var(--theme-secondary)" }}
-          className="text-sm leading-relaxed mb-8"
+          className="text-sm leading-relaxed mb-5"
         >
           <p className="mb-3">
             i just like building things. a lot. obsessed with performance,
@@ -112,7 +112,7 @@ export default function Hero() {
         {/* Social Icons */}
         <div
           style={{ ...fade(0.28), color: "var(--theme-muted)" }}
-          className="flex flex-wrap items-center gap-4 sm:gap-5 mb-8"
+          className="flex flex-wrap items-center gap-4 sm:gap-5 mb-5"
         >
           <a href="https://github.com/OsamaFed" target="_blank" rel="noreferrer"
             className="transition-colors duration-200"

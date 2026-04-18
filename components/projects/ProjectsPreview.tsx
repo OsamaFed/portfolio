@@ -8,11 +8,11 @@ export default function ProjectsPreview() {
   const featured = projects.filter(p => p.featured)
 
   return (
-    <section id="projects" className="px-8 md:px-16 py-24">
-      <div className="max-w-2xl">
+    <section id="projects" className="px-6 py-12">
+      <div className="max-w-2xl mx-auto">
 
         <AnimatedSection>
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-6">
             <h2 className="font-mono text-[28px] font-semibold"
               style={{ color: "var(--text-primary)" }}>
               Projects

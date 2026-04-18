@@ -29,11 +29,11 @@ const links = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="px-6 py-16">
+    <section id="contact" className="px-6 py-12">
       <div className="max-w-2xl mx-auto">
 
         <AnimatedSection>
-          <div className="mb-16">
+          <div className="mb-10">
             <h2 className="text-2xl font-semibold tracking-wider mb-6"
               style={{ fontFamily: "var(--font-mono, monospace)", color: "var(--theme-primary)" }}>
               Stats
