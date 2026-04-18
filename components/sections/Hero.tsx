@@ -46,7 +46,7 @@ export default function Hero() {
   })
 
   return (
-    <section className="min-h-screen flex flex-col justify-center relative overflow-hidden">
+    <section className="flex flex-col justify-center relative overflow-hidden">
 
       {/* Grid Background */}
       <div className="absolute inset-0 z-0" style={{
@@ -186,15 +186,6 @@ export default function Hero() {
 
       </div>
 
-      {/* Scroll Indicator */}
-      <div style={{ opacity: visible ? 0.3 : 0, transition: "opacity 1s ease 1s" }}
-        className="absolute bottom-9 left-1/2 -translate-x-1/2">
-        <div style={{
-          width: 1, height: 48,
-          background: "linear-gradient(to bottom, rgba(255,255,255,0.6), transparent)",
-          animation: "scrollLine 2s ease-in-out infinite",
-        }}/>
-      </div>
 
     </section>
   )
