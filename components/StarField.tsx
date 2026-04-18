@@ -6,10 +6,10 @@ const orionOffset      = { x: 0, y: 0 }
 const taurusOffset     = { x: 0, y: 0 }
 const pleiadesOffset   = { x: 0, y: 0 }
 const ursaOffset       = { x: 0, y: -3 }
-const cassiopeiaOffset = { x: 1, y: -2 }
+const cassiopeiaOffset = { x: 2.5, y: 0 }
 const scorpiusOffset   = { x: -0.5, y: -3 }
-const cancerOffset = { x: -4, y: -7 }
-const beehiveOffset = { x: -1.79, y: -6.1 }
+const cancerOffset = { x: -3, y: -4.9 }
+const beehiveOffset = { x: -0.79, y: -4.0 }
 const lynxOffset = { x: -2.5, y: -14 }
 const constellations = [
   {
@@ -102,7 +102,7 @@ const constellations = [
       { name: "Ruchbah",   x: cassiopeiaOffset.x + -2.2, y: cassiopeiaOffset.y + -1.5, size: 0.015 },
       { name: "Segin",     x: cassiopeiaOffset.x + -1.5, y: cassiopeiaOffset.y + -2.1, size: 0.014 },
     ],
-    delay: 0.6,
+    delay: 0.2,
     lines: [[0,1],[1,2],[2,3],[3,4]],
   },
   {
@@ -168,7 +168,7 @@ const constellations = [
         size:0.025
       }
     ],
-    delay:0.7,
+    delay:0.3,
     lines:[[0,2],[1,2],[2,23],[23,24],[23,25]]
   },
   {
@@ -184,7 +184,7 @@ const constellations = [
       { name: "6 Lyncis",     x: lynxOffset.x + 1.4,  y: lynxOffset.y + 8.4,  size: 0.013 },
       { name: "2 Lyncis",     x: lynxOffset.x + 1.7,  y: lynxOffset.y + 9.4,  size: 0.018 },
     ],
-    delay: 0.75,
+    delay: 0.5,
     lines: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,7],[7,8]],
   },
   {
@@ -258,7 +258,7 @@ const constellations = [
         size: 0.027 },
       
     ],
-    delay: 0.8,
+    delay: 0.6,
     lines: [[1,0],[2,0],[3,0],[0,4],[4,5],[5,7],[7,9],[9,22],[22,23],[23,24],[24,25],[25,26]]
   }
 ]
