@@ -19,16 +19,17 @@ export default function Navbar() {
         opacity: isLoaded ? 1 : 0,
       }}
     >
-      <div
-        className="flex items-center gap-8 px-6 py-3 rounded-xl"
-        style={{
-          background: "var(--theme-nav-bg)",
-          backdropFilter: "blur(32px) saturate(150%)",
-          WebkitBackdropFilter: "blur(32px) saturate(150%)",
-          border: "1px solid var(--theme-nav-border)",
-          boxShadow: "var(--theme-nav-shadow)",
-        }}
-      >
+        <div
+          className="flex items-center gap-6 px-6 py-3 rounded-xl"
+          style={{
+            width: "min(350px, 90vw)",
+            background: "var(--theme-nav-bg)",
+            backdropFilter: "blur(32px) saturate(150%)",
+            WebkitBackdropFilter: "blur(32px) saturate(150%)",
+            border: "1px solid var(--theme-nav-border)",
+            boxShadow: "var(--theme-nav-shadow)",
+          }}
+        >
         <Image
           src="/avatar.jpeg"
           alt="OsamaFed"

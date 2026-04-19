@@ -55,7 +55,7 @@ export default function Hero() {
         maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)",
       }}/>
 
-      <div className="relative z-10 max-w-2xl mx-auto w-full px-6 pt-28 pb-12">
+      <div className="relative z-10 max-w-2xl mx-auto w-full px-6 pt-38 pb-12">
 
         <div style={fade(0.1)} className="relative flex items-start gap-4 mb-5">
           <Image
@@ -90,6 +90,9 @@ export default function Hero() {
           <p className="mb-3">
             i just like building things. a lot. obsessed with performance,
             accessibility, and clean systems that scale.
+
+            going deep into backend lately — databases, apis, systems design.
+            becoming a better full stack dev, one layer at a time.
           </p>
           <p>
             in my free time, i'm doin astro over here{" "}
