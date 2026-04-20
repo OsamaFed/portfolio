@@ -88,11 +88,7 @@ export default function Hero() {
           className="text-sm leading-relaxed mb-5"
         >
           <p className="mb-3">
-            i just like building things. a lot. obsessed with performance,
-            accessibility, and clean systems that scale.
-
-            going deep into backend lately — databases, apis, systems design.
-            becoming a better full stack dev, one layer at a time.
+            just building things. performance, clean systems, backend depths.getting better at the full stack, one layer at a time.
           </p>
           <p>
             in my free time, i'm doin astro over here{" "}
