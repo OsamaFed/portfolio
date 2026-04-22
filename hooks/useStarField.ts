@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { constellations } from "./constellations.data";
+import { constellations } from "@/Data/constellations"
 
 const BG_STARS = 300;
 const LERP_SPEED = 0.05;
