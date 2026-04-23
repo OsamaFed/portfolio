@@ -21,42 +21,48 @@ export default function GitHubContributions({ username }: { username: string }) 
   useEffect(() => { setMounted(true) }, [])
 
   useEffect(() => {
-    if (!loading && scrollRef.current)
-      scrollRef.current.scrollLeft = scrollRef.current.scrollWidth
-  }, [loading])
-
-  useEffect(() => {
     async function fetch_() {
       try {
-        const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=last`)
+        const currentYear = new Date().getFullYear()
+        const res = await fetch(`https://github-contributions-api.jogruber.de/v4/${username}?y=${currentYear}`)
         const data = await res.json()
+
         if (data.contributions) {
           const weeks: ContributionWeek[] = []
           let week: ContributionDay[] = []
           let calc = 0
+
+          // تم إزالة الفلتر لرسم كامل أيام وأشهر السنة
           data.contributions.forEach((d: ContributionDay) => {
             calc += d.count
             week.push(d)
             if (week.length === 7) { weeks.push({ days: week }); week = [] }
           })
           if (week.length > 0) weeks.push({ days: week })
+
           setContributions(weeks)
-          setTotal(data.total?.["2025"] || data.total?.["2026"] || data.total?.lastYear || calc)
-          if (data.contributions.length > 0)
-            setYear(new Date(data.contributions[0].date).getFullYear())
+          setTotal(calc)
+          setYear(currentYear)
         }
       } catch {
-        // mock data
         const weeks: ContributionWeek[] = []
-        const today = new Date()
+        const startOfYear = new Date(new Date().getFullYear(), 0, 1)
         for (let w = 0; w < 52; w++) {
           const days: ContributionDay[] = []
           for (let d = 0; d < 7; d++) {
-            const r = Math.random()
-            const level = r > 0.7 ? 4 : r > 0.5 ? 3 : r > 0.3 ? 2 : r > 0.15 ? 1 : 0
-            const count = level === 4 ? 10 + Math.floor(Math.random() * 10) : level === 3 ? 5 + Math.floor(Math.random() * 5) : level === 2 ? 2 + Math.floor(Math.random() * 3) : level === 1 ? 1 : 0
-            const date = new Date(today)
-            date.setDate(date.getDate() - ((51 - w) * 7 + (6 - d)))
+            const date = new Date(startOfYear)
+            date.setDate(date.getDate() + (w * 7 + d))
+
+            // جعل الأيام المستقبلية في البيانات الوهمية فارغة
+            const isFuture = date > new Date()
+            let level = 0, count = 0
+
+            if (!isFuture) {
+                const r = Math.random()
+                level = r > 0.7 ? 4 : r > 0.5 ? 3 : r > 0.3 ? 2 : r > 0.15 ? 1 : 0
+                count = level === 4 ? 10 + Math.floor(Math.random() * 10) : level === 3 ? 5 + Math.floor(Math.random() * 5) : level === 2 ? 2 + Math.floor(Math.random() * 3) : level === 1 ? 1 : 0
+            }
+
             days.push({ date: date.toISOString().split("T")[0], count, level })
           }
           weeks.push({ days })
@@ -140,7 +146,6 @@ export default function GitHubContributions({ username }: { username: string }) 
           </div>
         </div>
 
-        {/* Footer */}
         <div className="flex items-center justify-between mt-4">
           <span className="font-mono text-[11px]" style={{ color: "var(--text-faint)" }}>
             {total.toLocaleString()} contributions in {year}

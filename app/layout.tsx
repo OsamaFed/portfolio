@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import "./globals.css"
 import ThemeProvider from "@/components/layout/ThemeProvider"
 import Navbar from "@/components/layout/Navbar"
-import Footer from "@/components/layout/Footer"
 import StarField from "@/components/StarField"
 
 export const metadata: Metadata = {
@@ -18,7 +17,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
          <StarField />
           <Navbar />
           <main>{children}</main>
-          <Footer />
         </ThemeProvider>
       </body>
     </html>
