@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import ThemeToggle from "./ThemeToggle"
 
 export default function Navbar() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -59,7 +58,6 @@ export default function Navbar() {
           onMouseLeave={e => (e.currentTarget.style.color = "var(--theme-secondary)")}>
           contact
         </a>
-        <ThemeToggle />
       </div>
     </nav>
   )

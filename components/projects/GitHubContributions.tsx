@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { createPortal } from "react-dom"
-import { useTheme } from "@/components/layout/ThemeProvider"
 
 interface ContributionDay { date: string; count: number; level: number }
 interface ContributionWeek { days: ContributionDay[] }
@@ -16,7 +15,6 @@ export default function GitHubContributions({ username }: { username: string }) 
   const [hoveredDay, setHoveredDay] = useState<{ day: ContributionDay; x: number; y: number } | null>(null)
   const [mounted, setMounted] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
-  const { theme } = useTheme()
 
   useEffect(() => { setMounted(true) }, [])
 
@@ -77,9 +75,6 @@ export default function GitHubContributions({ username }: { username: string }) 
   }, [username])
 
   const getLevelColor = (level: number) => {
-    if (theme === "light") {
-      return ["bg-[#e5e5e0]","bg-[#c0c0c0]","bg-[#8a8a8a]","bg-[#505050]","bg-[#1a1a1a]"][level] ?? "bg-[#e5e5e0]"
-    }
     return [
       "bg-[#1a1a1a]",
       "bg-[#3d3d3d]",
