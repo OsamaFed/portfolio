@@ -21,7 +21,7 @@ export default function ProjectsPreview() {
               className="font-mono text-[12px] tracking-wide transition-colors duration-200"
               style={{ color: "var(--text-faint)" }}
               onMouseEnter={e => (e.currentTarget.style.color = "var(--text-primary)")}
-              onMouseLeave={e => (e.currentTarget.style.color = "var(--text-faint)")}>
+              onMouseLeave={e => (e.currentTarget.style.color = "var(--text-muted)")}>
               view all →
             </Link>
           </div>

@@ -62,6 +62,7 @@ const projects: Project[] = [
     date: "Oct 2025",
     link: "https://yefax.vercel.app/",
     status: "live",
+    image: "/imgs/projectsimgs/Ye2.jpeg"
   },
   {
     name: "AstroDo",
@@ -109,8 +110,9 @@ const projects: Project[] = [
     desc: "A simple CRUD project built while learning JavaScript. Demonstrates fundamental create, read, update, and delete operations on data.",
     stack: ["JavaScript", "HTML", "CSS"],
     date: "2024",
-    link: "https://github.com/OsamaFed/Basic-CRUD",
+    link: "https://managly.netlify.app/",
     status: "live",
+    image: "/imgs/projectsimgs/CRUD.jpeg"
   },
 ]
 
