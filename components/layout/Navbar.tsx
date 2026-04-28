@@ -14,7 +14,7 @@ export default function Navbar() {
     <nav
       className="fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-700 ease-out"
       style={{
-        filter: isLoaded ? "none" : "blur(20px)",
+        filter: isLoaded ? "none" : "blur(10px)",
         opacity: isLoaded ? 1 : 0,
       }}
     >
@@ -23,7 +23,7 @@ export default function Navbar() {
           style={{
             width: "min(350px, 90vw)",
             background: "var(--theme-nav-bg)",
-            backdropFilter: "blur(32px) saturate(150%)",
+            backdropFilter: "blur(10px) saturate(150%)",
             WebkitBackdropFilter: "blur(32px) saturate(150%)",
             border: "1px solid var(--theme-nav-border)",
             boxShadow: "var(--theme-nav-shadow)",

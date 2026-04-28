@@ -55,25 +55,25 @@ export default function Hero() {
         maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%)",
       }}/>
 
-      <div className="relative z-10 max-w-2xl mx-auto w-full px-6 pt-38 pb-12">
+        <div className="relative z-10 max-w-2xl mx-auto w-full px-6 pb-6" style={{ paddingTop: "140px"}}>
 
         <div style={fade(0.1)} className="relative flex items-start gap-4 mb-5">
           <Image
             src="/avatar.jpeg"
             alt="Osama Mohammed"
-            width={96}
-            height={96}
-            className="object-cover shrink-0 rounded-sm mt-1"
+            width={90}
+            height={90}
+            className="object-cover shrink-0 rounded-sm mt-0"
             style={{ boxShadow: "var(--theme-avatar-shadow)" }}
           />
-          <div className="flex flex-col justify-start">
+            <div className="flex flex-col justify-start mt-2">
             <h1 className="text-2xl font-semibold tracking-wide mb-1"
               style={{ fontFamily: "var(--font-mono, monospace)", color: "var(--theme-primary)" }}>
               Osama Mo
             </h1>
             <p className="text-sm mb-2"
               style={{ fontFamily: "var(--font-mono, monospace)", color: "var(--theme-secondary)" }}>
-              frontend dev
+              Frontend dev
             </p>
             <p className="text-sm"
               style={{ fontFamily: "var(--font-mono, monospace)", color: "var(--theme-muted)" }}>
@@ -88,7 +88,8 @@ export default function Hero() {
           className="text-sm leading-relaxed mb-5"
         >
           <p className="mb-3">
-            just building things. performance, clean systems, backend depths.getting better at the full stack, one layer at a time.
+            just building things obsessed with performance and clean systems.
+            going deep into backend lately, becoming a better full stack dev.
           </p>
           <p>
             in my free time, i'm doin astro over here{" "}
@@ -103,8 +104,8 @@ export default function Hero() {
             >
               @astronomyquest
             </a>
-            , playing chess, or exploring Raya lucaria for the 9th time,
-            oh — i build everything from my phone.
+            , playing chess, or out on a run somewhere,
+            oh i build everything from my phone.
           </p>
         </div>
 
