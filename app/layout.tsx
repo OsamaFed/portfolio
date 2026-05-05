@@ -18,12 +18,21 @@ export const metadata: Metadata = {
     siteName: "OsamaFed",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og-image.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "OsamaFed — Frontend Developer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "OsamaFed — Frontend Developer",
     description: "Frontend developer specializing in React and Next.js. Building fast, clean, and accessible web experiences.",
     creator: "@osamafed",
+    images: ["/og-image.jpeg"],
   },
   robots: {
     index: true,
