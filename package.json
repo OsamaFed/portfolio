@@ -1,0 +1,39 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node_modules/.bin/next dev -p 5000 -H 0.0.0.0",
+    "build": "node_modules/.bin/next build",
+    "start": "node_modules/.bin/next start -p 5000 -H 0.0.0.0",
+    "lint": "eslint",
+    "strip-comments": "node scripts/strip-comments.mjs",
+    "strip-comments-py": "python3 scripts/strip_comments.py"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
+    "@types/three": "^0.183.1",
+    "@vercel/analytics": "^2.0.1",
+    "drizzle-zod": "^0.8.3",
+    "framer-motion": "^12.38.0",
+    "next": "16.2.1",
+    "openai": "^6.35.0",
+    "p-limit": "^7.3.0",
+    "p-retry": "^7.1.1",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-icons": "^5.6.0",
+    "three": "^0.183.2",
+    "zod": "^4.4.2",
+    "zod-validation-error": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.1",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^5"
+  }
+}
