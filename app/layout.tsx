@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     template: "%s | OsamaFed",
   },
   description: "Frontend developer specializing in React and Next.js. Building fast, clean, and accessible web experiences.",
+  applicationName: "OsamaFed",
   metadataBase: new URL("https://osamafed.vercel.app"),
   openGraph: {
     title: "OsamaFed — Frontend Developer",
@@ -20,10 +21,12 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.jpeg",
+        url: "/avatar.jpeg",
         width: 1200,
         height: 630,
         alt: "OsamaFed — Frontend Developer",
+        type: "image/jpeg",
+        secureUrl: "https://osamafed.vercel.app/avatar.jpeg",
       },
     ],
   },
@@ -32,11 +35,24 @@ export const metadata: Metadata = {
     title: "OsamaFed — Frontend Developer",
     description: "Frontend developer specializing in React and Next.js. Building fast, clean, and accessible web experiences.",
     creator: "@osamafed",
-    images: ["/og-image.jpeg"],
+    site: "@osamafed",
+    images: ["/avatar.jpeg"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "OsamaFed",
+  },
+  formatDetection: {
+    telephone: false,
   },
 }
 

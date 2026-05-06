@@ -30,18 +30,34 @@ export async function generateMetadata(
   const project = projects.find(p => p.slug === slug)
   if (!project) return {}
 
+  const imageUrl = project.image 
+    ? project.image
+    : "/avatar.jpeg"
+
   return {
     title: project.name,
     description: project.desc,
     openGraph: {
       title: project.name,
       description: project.desc,
-      ...(project.image && { images: [{ url: project.image }] }),
+      images: [{ 
+        url: imageUrl,
+        width: 1200,
+        height: 630,
+        alt: project.name,
+        type: "image/jpeg",
+        secureUrl: `https://osamafed.vercel.app${imageUrl}`,
+      }],
+      url: `https://osamafed.vercel.app/projects/${slug}`,
+      type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: project.name,
       description: project.desc,
+      creator: "@osamafed",
+      site: "@osamafed",
+      images: [imageUrl],
     },
   }
 }
