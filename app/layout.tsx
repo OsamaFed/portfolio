@@ -11,17 +11,17 @@ export const metadata: Metadata = {
   },
   description: "Frontend developer specializing in React, Next.js, and modern web technologies",
   applicationName: "OsamaFed",
-  metadataBase: new URL("https://osamafed.vercel.app"),
+  metadataBase: new URL("https://osamafedportfolio.vercel.app"),
   openGraph: {
     title: "OsamaFed – Frontend Developer",
     description: "Frontend developer specializing in React, Next.js, and modern web technologies",
-    url: "https://osamafed.vercel.app",
+    url: "https://osamafedportfolio.vercel.app",
     siteName: "OsamaFed",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "avatar.jpeg",
+        url: "/avatar.jpeg",
         width: 1200,
         height: 630,
         alt: "OsamaFed – Frontend Developer",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     description: "Frontend developer specializing in React, Next.js, and modern web technologies",
     creator: "@osamafed",
     site: "@osamafed",
-    images: ["avatar.jpeg"],
+    images: ["/avatar.jpeg"],
   },
   robots: {
     index: true,
