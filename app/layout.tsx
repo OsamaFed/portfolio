@@ -6,15 +6,15 @@ import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: {
-    default: "OsamaFed — Frontend Developer",
+    default: "OsamaFed – Frontend Developer",
     template: "%s | OsamaFed",
   },
-  description: "Frontend developer specializing in React and Next.js. Building fast, clean, and accessible web experiences.",
+  description: "Frontend developer specializing in React, Next.js, and modern web technologies",
   applicationName: "OsamaFed",
   metadataBase: new URL("https://osamafed.vercel.app"),
   openGraph: {
-    title: "OsamaFed — Frontend Developer",
-    description: "Frontend developer specializing in React and Next.js. Building fast, clean, and accessible web experiences.",
+    title: "OsamaFed – Frontend Developer",
+    description: "Frontend developer specializing in React, Next.js, and modern web technologies",
     url: "https://osamafed.vercel.app",
     siteName: "OsamaFed",
     locale: "en_US",
@@ -24,15 +24,15 @@ export const metadata: Metadata = {
         url: "https://osamafed.vercel.app/avatar.jpeg",
         width: 1200,
         height: 630,
-        alt: "OsamaFed — Frontend Developer",
+        alt: "OsamaFed – Frontend Developer",
         type: "image/jpeg",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OsamaFed — Frontend Developer",
-    description: "Frontend developer specializing in React and Next.js. Building fast, clean, and accessible web experiences.",
+    title: "OsamaFed – Frontend Developer",
+    description: "Frontend developer specializing in React, Next.js, and modern web technologies",
     creator: "@osamafed",
     site: "@osamafed",
     images: ["https://osamafed.vercel.app/avatar.jpeg"],
