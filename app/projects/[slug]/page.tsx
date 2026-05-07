@@ -31,8 +31,8 @@ export async function generateMetadata(
   if (!project) return {}
 
   const imageUrl = project.image 
-    ? project.image
-    : "/avatar.jpeg"
+    ? `https://osamafed.vercel.app${project.image}`
+    : "https://osamafed.vercel.app/avatar.jpeg"
 
   return {
     title: project.name,
@@ -46,7 +46,6 @@ export async function generateMetadata(
         height: 630,
         alt: project.name,
         type: "image/jpeg",
-        secureUrl: `https://osamafed.vercel.app${imageUrl}`,
       }],
       url: `https://osamafed.vercel.app/projects/${slug}`,
       type: "website",

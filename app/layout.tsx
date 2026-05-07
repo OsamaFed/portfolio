@@ -21,12 +21,11 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/avatar.jpeg",
+        url: "https://osamafed.vercel.app/avatar.jpeg",
         width: 1200,
         height: 630,
         alt: "OsamaFed — Frontend Developer",
         type: "image/jpeg",
-        secureUrl: "https://osamafed.vercel.app/avatar.jpeg",
       },
     ],
   },
@@ -36,7 +35,7 @@ export const metadata: Metadata = {
     description: "Frontend developer specializing in React and Next.js. Building fast, clean, and accessible web experiences.",
     creator: "@osamafed",
     site: "@osamafed",
-    images: ["/avatar.jpeg"],
+    images: ["https://osamafed.vercel.app/avatar.jpeg"],
   },
   robots: {
     index: true,
