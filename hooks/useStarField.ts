@@ -74,13 +74,14 @@ function createBackgroundStars(scene: THREE.Scene): {
 function getConstellationDistribution(windowWidth: number, windowHeight: number): { scaleX: number; scaleY: number } {
   const aspectRatio = windowWidth / windowHeight;
   
-  if (windowWidth >= 1024) return { scaleX: 2.2, scaleY: 1 };
-  if (windowWidth >= 768) return { scaleX: 1.7, scaleY: 1 };
-  if (aspectRatio >= 1.2) return { scaleX: 1.3, scaleY: 1 };
-  if (aspectRatio >= 1) return { scaleX: 1.1, scaleY: 1 };
+  if (windowWidth >= 1024) return { scaleX: 1.4, scaleY: 1 };
+  if (windowWidth >= 768) return { scaleX: 1.2, scaleY: 1 };
+  if (aspectRatio >= 1.2) return { scaleX: 1.1, scaleY: 1 };
+  if (aspectRatio >= 1) return { scaleX: 1.05, scaleY: 1 };
   
   return { scaleX: 1, scaleY: 1 };
 }
+
 
 
 
