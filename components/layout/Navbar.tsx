@@ -63,7 +63,7 @@ export default function Navbar() {
       <div
         className="flex items-center gap-7 px-6 py-3 rounded-xl"
         style={{
-          width: "min(350px, 90vw)",
+          width: "350px",
           background: "var(--theme-nav-bg)",
           backdropFilter: "blur(10px) saturate(150%)",
           WebkitBackdropFilter: "blur(32px) saturate(150%)",
