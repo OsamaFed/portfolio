@@ -72,27 +72,16 @@ function createBackgroundStars(scene: THREE.Scene): {
 }
 
 function getConstellationDistribution(windowWidth: number, windowHeight: number): { scaleX: number; scaleY: number } {
-  // حساب نسبة عرض الشاشة (aspect ratio)
   const aspectRatio = windowWidth / windowHeight;
-
-  // على الهواتف بالوضع العمودي (portrait) - نسبة < 1
-  if (aspectRatio < 1) {
-    return { scaleX: 1, scaleY: 1 };
-  }
-
-  // على الهواتف بالوضع الأفقي أو الشاشات الصغيرة (1 - 1.2)
-  if (aspectRatio < 1.2) {
-    return { scaleX: 1.1, scaleY: 0.95 };
-  }
-
-  // على آيباد بالعرض أو ديسكتوب صغير (1.2 - 1.6)
-  if (aspectRatio < 1.6) {
-    return { scaleX: 1.4, scaleY: 1.2 };
-  }
-
-  // على ديسكتوب كبير أو شاشات عريضة جداً (1.6+)
-  return { scaleX: 1.8, scaleY: 1.5 };
+  
+  if (windowWidth >= 1024) return { scaleX: 2.5, scaleY: 2 };
+  if (windowWidth >= 768) return { scaleX: 2, scaleY: 1.6 };
+  if (aspectRatio >= 1.2) return { scaleX: 1.4, scaleY: 1.2 };
+  if (aspectRatio >= 1) return { scaleX: 1.2, scaleY: 1 };
+  
+  return { scaleX: 1, scaleY: 1 };
 }
+
 
 function buildConstellationObjects(scene: THREE.Scene): {
   allStars: SceneStar[];
