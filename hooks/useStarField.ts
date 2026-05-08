@@ -15,6 +15,8 @@ const BG_OPACITY_BASE = 0.15;
 const BG_OPACITY_RANGE = 0.5;
 const LINE_TARGET_OPACITY = 0.25;
 const RESIZE_DEBOUNCE_MS = 100;
+const SPREAD_ASPECT_THRESHOLD = 0.7;
+const SPREAD_MULTIPLIER = 5;
 
 type StarMesh = THREE.Mesh<THREE.SphereGeometry, THREE.MeshBasicMaterial>;
 type LineMesh = THREE.Line<THREE.BufferGeometry, THREE.LineBasicMaterial>;
@@ -45,6 +47,17 @@ function buildStarOffsets(): number[] {
   return offsets
 }
 
+function computeSpreadScale(aspect: number): number {
+  return Math.max(0, aspect - SPREAD_ASPECT_THRESHOLD) * SPREAD_MULTIPLIER;
+}
+
+function applySpread(groups: THREE.Group[], spreadScale: number): void {
+  groups.forEach((group, ci) => {
+    const bias = constellations[ci].lateralBias ?? 0;
+    group.position.x = bias * spreadScale;
+  });
+}
+
 function createBackgroundStars(scene: THREE.Scene): {
   geo: THREE.BufferGeometry;
   mat: THREE.PointsMaterial;
@@ -71,20 +84,6 @@ function createBackgroundStars(scene: THREE.Scene): {
   return { geo, mat };
 }
 
-function getConstellationDistribution(windowWidth: number, windowHeight: number): { scaleX: number; scaleY: number } {
-  const aspectRatio = windowWidth / windowHeight;
-  
-  if (windowWidth >= 1024) return { scaleX: 1.4, scaleY: 1 };
-  if (windowWidth >= 768) return { scaleX: 1.2, scaleY: 1 };
-  if (aspectRatio >= 1.2) return { scaleX: 1.1, scaleY: 1 };
-  if (aspectRatio >= 1) return { scaleX: 1.05, scaleY: 1 };
-  
-  return { scaleX: 1, scaleY: 1 };
-}
-
-
-
-
 function buildConstellationObjects(scene: THREE.Scene): {
   allStars: SceneStar[];
   allLines: SceneLine[];
@@ -93,8 +92,6 @@ function buildConstellationObjects(scene: THREE.Scene): {
   const allStars: SceneStar[] = [];
   const allLines: SceneLine[] = [];
   const groups: THREE.Group[] = [];
-
-  const distribution = getConstellationDistribution(window.innerWidth, window.innerHeight);
 
   constellations.forEach((c, ci) => {
     const group = new THREE.Group();
@@ -111,9 +108,7 @@ function buildConstellationObjects(scene: THREE.Scene): {
       });
 
       const mesh = new THREE.Mesh(geo, mat) as StarMesh;
-      const scaledX = s.x * distribution.scaleX;
-      const scaledY = s.y * distribution.scaleY;
-      mesh.position.set(scaledX, scaledY, 0);
+      mesh.position.set(s.x, s.y, 0);
 
       if (s.size === 0) {
         mesh.visible = false;
@@ -128,8 +123,8 @@ function buildConstellationObjects(scene: THREE.Scene): {
       const to   = c.stars[l[1]];
 
       const geo = new THREE.BufferGeometry().setFromPoints([
-        new THREE.Vector3(from.x * distribution.scaleX, from.y * distribution.scaleY, 0),
-        new THREE.Vector3(to.x * distribution.scaleX, to.y * distribution.scaleY, 0),
+        new THREE.Vector3(from.x, from.y, 0),
+        new THREE.Vector3(to.x,   to.y,   0),
       ]);
       const mat = new THREE.LineBasicMaterial({
         color: 0xffffff,
@@ -165,7 +160,6 @@ function disposeScene(
 
   bgGeo.dispose();
   bgMat.dispose();
-  
   
   renderer.dispose();
 }
@@ -218,21 +212,11 @@ export function useStarField(
       }
     };
 
-    let lastDistribution = getConstellationDistribution(window.innerWidth, window.innerHeight);
-    let pendingResize = false;
-
     const onResize = () => {
-      // تجنب معالجة متعددة للـ resize في نفس الوقت
-      if (pendingResize) return;
-      pendingResize = true;
-
       const currentRenderer = renderer;
       const currentCamera = camera;
-      const currentScene = scene;
-      if (!currentRenderer || !currentCamera || !currentScene) {
-        pendingResize = false;
-        return;
-      }
+      
+      if (!currentRenderer || !currentCamera) return;
 
       if (resizeTimer !== null) {
         clearTimeout(resizeTimer);
@@ -242,44 +226,11 @@ export function useStarField(
         const newW = window.innerWidth;
         const newH = window.innerHeight;
 
-        // تحديث حجم الكاميرا والرندرر دائماً
         currentCamera.aspect = newW / newH;
         currentCamera.updateProjectionMatrix();
         currentRenderer.setSize(newW, newH);
-
-        // إعادة بناء الكوكبات فقط إذا تغيرت نقطة التوزيع
-        const newDistribution = getConstellationDistribution(newW, newH);
-        const scaleChanged =
-          newDistribution.scaleX !== lastDistribution.scaleX ||
-          newDistribution.scaleY !== lastDistribution.scaleY;
-
-        if (scaleChanged) {
-          lastDistribution = newDistribution;
-
-          // تحسين الأداء: تنظيف الموارد بكفاءة
-          allStars.forEach(({ mesh }) => {
-            mesh.geometry.dispose();
-            mesh.material.dispose();
-          });
-          allLines.forEach(({ line }) => {
-            line.geometry.dispose();
-            line.material.dispose();
-          });
-          
-          // إزالة المجموعات من المشهد في دفعة واحدة
-          groups.forEach((g) => currentScene.remove(g));
-          groups.length = 0;
-
-          // إعادة بناء الكوكبات بالمعامل الجديد
-          const built = buildConstellationObjects(currentScene);
-          allStars.length = 0;
-          allStars.push(...built.allStars);
-          allLines.length = 0;
-          allLines.push(...built.allLines);
-          groups.push(...built.groups);
-        }
-
-        pendingResize = false;
+        
+        applySpread(groups, computeSpreadScale(currentCamera.aspect));
       }, RESIZE_DEBOUNCE_MS);
     };
 
@@ -375,6 +326,8 @@ export function useStarField(
       allStars.push(...built.allStars);
       allLines.push(...built.allLines);
       groups.push(...built.groups);
+
+      applySpread(groups, computeSpreadScale(camera.aspect));
 
       scrollRef.current = 0;
 
