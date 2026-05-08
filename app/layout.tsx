@@ -1,8 +1,23 @@
 import type { Metadata } from "next"
+import { JetBrains_Mono, Outfit } from "next/font/google"
 import "./globals.css"
 import Navbar from "@/components/layout/Navbar"
 import StarField from "@/components/StarField"
 import { Analytics } from "@vercel/analytics/next"
+
+const jetBrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+  variable: "--font-mono",
+})
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+  variable: "--font-sans",
+})
 
 export const metadata: Metadata = {
   title: {
@@ -58,7 +73,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${jetBrainsMono.variable} ${outfit.variable}`}>
         <StarField />
         <Navbar />
         <main>{children}</main>

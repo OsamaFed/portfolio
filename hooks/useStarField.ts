@@ -181,92 +181,88 @@ export function useStarField(
   mountRef: React.RefObject<HTMLDivElement | null>,
   frozen = false
 ) {
-  const scrollRef  = useRef(0);
-  const animRef    = useRef<number>(0);
-  
-  const frozenRef  = useRef(frozen);
+  const scrollRef = useRef(0);
+  const animRef = useRef<number>(0);
+  const initRef = useRef(false);
+  const visibleRef = useRef(false);
+  const frozenRef = useRef(frozen);
 
-  
   useEffect(() => {
     frozenRef.current = frozen;
   }, [frozen]);
 
-  
   useEffect(() => {
     if (!mountRef.current || !isWebGLAvailable()) return;
 
-    const W = window.innerWidth;
-    const H = window.innerHeight;
-
-    let renderer: THREE.WebGLRenderer;
-    try {
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    } catch {
-      return;
-    }
-    renderer.setSize(W, H);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x000000, 0);
-    mountRef.current.appendChild(renderer.domElement);
-
-    const scene  = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(85, W / H, 0.1, 100);
-    camera.position.z = CAMERA_Z;
-
-    const { geo: bgGeo, mat: bgMat }    = createBackgroundStars(scene);
-    const { allStars, allLines, groups } = buildConstellationObjects(scene);
-
-    applySpread(groups, computeSpreadScale(camera.aspect));
-
-    const starOffsets   = buildStarOffsets();
-    const totalElements = allStars.length + allLines.length;
-
-    scrollRef.current = 0;
+    let renderer: THREE.WebGLRenderer | null = null;
+    let scene: THREE.Scene | null = null;
+    let camera: THREE.PerspectiveCamera | null = null;
+    let bgGeo: THREE.BufferGeometry | null = null;
+    let bgMat: THREE.PointsMaterial | null = null;
+    let allStars: SceneStar[] = [];
+    let allLines: SceneLine[] = [];
+    let groups: THREE.Group[] = [];
+    let resizeTimer: number | null = null;
+    let observer: IntersectionObserver | null = null;
 
     const onScroll = () => {
       const maxScroll = document.body.scrollHeight - window.innerHeight;
       scrollRef.current = maxScroll > 0 ? window.scrollY / maxScroll : 0;
+      if (!initRef.current) {
+        initScene();
+      }
     };
 
-    
-    let scrollListenerActive = false;
-    const raf1 = requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        scrollListenerActive = true;
-        window.addEventListener("scroll", onScroll, { passive: true });
-      });
-    });
-
-    let resizeTimer: ReturnType<typeof setTimeout>;
     const onResize = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
+      const currentRenderer = renderer;
+      const currentCamera = camera;
+      const currentGroups = groups;
+      if (!currentRenderer || !currentCamera) return;
+
+      if (resizeTimer !== null) {
+        clearTimeout(resizeTimer);
+      }
+      resizeTimer = window.setTimeout(() => {
         const newW = window.innerWidth;
         const newH = window.innerHeight;
-        camera.aspect = newW / newH;
-        camera.updateProjectionMatrix();
-        renderer.setSize(newW, newH);
-        applySpread(groups, computeSpreadScale(camera.aspect));
+        currentCamera.aspect = newW / newH;
+        currentCamera.updateProjectionMatrix();
+        currentRenderer.setSize(newW, newH);
+        applySpread(currentGroups, computeSpreadScale(currentCamera.aspect));
       }, RESIZE_DEBOUNCE_MS);
     };
-    window.addEventListener("resize", onResize);
+
+    const startAnimation = () => {
+      if (animRef.current) return;
+      animRef.current = requestAnimationFrame(animate);
+    };
+
+    const stopAnimation = () => {
+      if (animRef.current) {
+        cancelAnimationFrame(animRef.current);
+        animRef.current = 0;
+      }
+    };
 
     const animate = (timestamp: number) => {
-      animRef.current = requestAnimationFrame(animate);
+      if (!visibleRef.current || !renderer || !camera || !bgMat || !scene) {
+        animRef.current = 0;
+        return;
+      }
 
-      
       const progress = frozenRef.current ? 0.3 : scrollRef.current;
-
       bgMat.opacity = BG_OPACITY_BASE + progress * BG_OPACITY_RANGE;
 
-      allStars.forEach((s, i) => {
-        const delay            = constellations[s.constIdx].delay ?? 0;
-        const adjustedProgress = getAdjustedProgress(progress, delay);
-        const visibleCount     = adjustedProgress * totalElements;
-        const targetOpacity    = i < visibleCount ? 1 : 0;
+      const totalElements = allStars.length + allLines.length;
+      const starOffsets = buildStarOffsets();
 
-        s.mesh.material.opacity +=
-          (targetOpacity - s.mesh.material.opacity) * LERP_SPEED;
+      allStars.forEach((s, i) => {
+        const delay = constellations[s.constIdx].delay ?? 0;
+        const adjustedProgress = getAdjustedProgress(progress, delay);
+        const visibleCount = adjustedProgress * totalElements;
+        const targetOpacity = i < visibleCount ? 1 : 0;
+
+        s.mesh.material.opacity += (targetOpacity - s.mesh.material.opacity) * LERP_SPEED;
 
         if (s.mesh.material.opacity > 0.5) {
           s.mesh.material.opacity = THREE.MathUtils.clamp(
@@ -279,43 +275,105 @@ export function useStarField(
       });
 
       allLines.forEach((l) => {
-        const c                = constellations[l.constIdx];
-        const delay            = c.delay ?? 0;
+        const c = constellations[l.constIdx];
+        const delay = c.delay ?? 0;
         const adjustedProgress = getAdjustedProgress(progress, delay);
-        const visibleCount     = adjustedProgress * totalElements;
-        const lineData         = c.lines[l.lineIdx];
+        const visibleCount = adjustedProgress * totalElements;
+        const lineData = c.lines[l.lineIdx];
 
         const secondStarGlobalIdx = starOffsets[l.constIdx] + lineData[1];
-        const targetOpacity = secondStarGlobalIdx < visibleCount
-          ? LINE_TARGET_OPACITY
-          : 0;
+        const targetOpacity = secondStarGlobalIdx < visibleCount ? LINE_TARGET_OPACITY : 0;
 
-        l.line.material.opacity +=
-          (targetOpacity - l.line.material.opacity) * LERP_SPEED;
+        l.line.material.opacity += (targetOpacity - l.line.material.opacity) * LERP_SPEED;
       });
 
       camera.position.y = -progress * CAMERA_Y_RANGE;
       camera.position.x = Math.sin(progress * Math.PI) * CAMERA_X_SWING;
 
       renderer.render(scene, camera);
+      animRef.current = requestAnimationFrame(animate);
     };
 
-    animRef.current = requestAnimationFrame(animate);
+    const initScene = () => {
+      if (initRef.current || !mountRef.current || !isWebGLAvailable()) return;
+      initRef.current = true;
+
+      const W = window.innerWidth;
+      const H = window.innerHeight;
+
+      try {
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      } catch {
+        return;
+      }
+
+      renderer.setSize(W, H);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x000000, 0);
+      mountRef.current.appendChild(renderer.domElement);
+
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(85, W / H, 0.1, 100);
+      camera.position.z = CAMERA_Z;
+
+      const bgStars = createBackgroundStars(scene);
+      bgGeo = bgStars.geo;
+      bgMat = bgStars.mat;
+
+      const built = buildConstellationObjects(scene);
+      allStars = built.allStars;
+      allLines = built.allLines;
+      groups = built.groups;
+
+      applySpread(groups, computeSpreadScale(camera.aspect));
+      scrollRef.current = 0;
+
+      window.addEventListener("resize", onResize);
+
+      if (visibleRef.current) {
+        startAnimation();
+      }
+    };
+
+    observer = new IntersectionObserver(
+      (entries) => {
+        const isVisible = entries.some((entry) => entry.isIntersecting);
+        visibleRef.current = isVisible;
+
+        if (isVisible) {
+          initScene();
+          if (initRef.current) {
+            startAnimation();
+          }
+        } else {
+          stopAnimation();
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(mountRef.current);
+    window.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
-      cancelAnimationFrame(animRef.current);
-      cancelAnimationFrame(raf1);
-      clearTimeout(resizeTimer);
-      if (scrollListenerActive) {
-        window.removeEventListener("scroll", onScroll);
+      stopAnimation();
+      if (observer && mountRef.current) {
+        observer.unobserve(mountRef.current);
+        observer.disconnect();
       }
+
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onResize);
+      if (resizeTimer) {
+        clearTimeout(resizeTimer);
+      }
 
-      disposeScene(allStars, allLines, bgGeo, bgMat, renderer);
-
-      if (mountRef.current?.contains(renderer.domElement)) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (renderer && initRef.current && bgGeo && bgMat) {
+        disposeScene(allStars, allLines, bgGeo, bgMat, renderer);
+        if (mountRef.current?.contains(renderer.domElement)) {
+          mountRef.current.removeChild(renderer.domElement);
+        }
       }
     };
-  }, []); 
+  }, [mountRef]);
 }
