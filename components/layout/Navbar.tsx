@@ -63,7 +63,8 @@ export default function Navbar() {
       <div
         className="flex items-center gap-7 px-6 py-3 rounded-xl"
         style={{
-          width: "350px",
+          width: "max-content",
+          maxWidth: "95vw",
           background: "var(--theme-nav-bg)",
           backdropFilter: "blur(10px) saturate(150%)",
           WebkitBackdropFilter: "blur(32px) saturate(150%)",
@@ -81,7 +82,7 @@ export default function Navbar() {
         />
         <Link
           href="/projects"
-          className="text-sm transition-colors"
+          className="text-sm transition-colors whitespace-nowrap"
           style={linkStyle}
           onMouseEnter={e => (e.currentTarget.style.color = "var(--theme-primary)")}
           onMouseLeave={e => (e.currentTarget.style.color = "var(--theme-secondary)")}
@@ -90,7 +91,7 @@ export default function Navbar() {
         </Link>
         <a
           href="#skills"
-          className="text-sm transition-colors"
+          className="text-sm transition-colors whitespace-nowrap"
           style={linkStyle}
           onMouseEnter={e => (e.currentTarget.style.color = "var(--theme-primary)")}
           onMouseLeave={e => (e.currentTarget.style.color = "var(--theme-secondary)")}
@@ -100,7 +101,7 @@ export default function Navbar() {
         </a>
         <a
           href="#contact"
-          className="text-sm transition-colors"
+          className="text-sm transition-colors whitespace-nowrap"
           style={linkStyle}
           onMouseEnter={e => (e.currentTarget.style.color = "var(--theme-primary)")}
           onMouseLeave={e => (e.currentTarget.style.color = "var(--theme-secondary)")}
